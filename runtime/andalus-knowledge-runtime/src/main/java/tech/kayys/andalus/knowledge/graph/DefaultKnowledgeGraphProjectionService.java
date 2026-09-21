@@ -1,0 +1,249 @@
+package tech.kayys.andalus.knowledge.graph;
+
+import tech.kayys.andalus.knowledge.exchange.compact.InMemoryKnowledgeAnswerArtifactGraphStore;
+import tech.kayys.andalus.knowledge.exchange.compact.KnowledgeAnswerArtifactRelation;
+import tech.kayys.andalus.knowledge.exchange.selection.KnowledgeAnswerResolutionDependency;
+import tech.kayys.andalus.knowledge.exchange.selection.InMemoryKnowledgeAnswerResolutionDependencyGraph;
+import tech.kayys.andalus.knowledge.lineage.InMemoryKnowledgeLineageStore;
+import tech.kayys.andalus.knowledge.lineage.KnowledgeLineageEdge;
+import tech.kayys.andalus.knowledge.snapshot.dependency.InMemoryKnowledgeSnapshotDependencyGraph;
+import tech.kayys.andalus.knowledge.snapshot.dependency.KnowledgeSnapshotDependency;
+import tech.kayys.andalus.knowledge.snapshot.KnowledgeSnapshotId;
+
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+
+/**
+ * Default runtime implementation of {@link KnowledgeGraphProjectionService}.
+ *
+ * <p>Wired to in-memory runtime stores from {@code andalus-knowledge-runtime}.
+ * Can be replaced with a persistent-backed implementation for production.</p>
+ */
+public class DefaultKnowledgeGraphProjectionService implements KnowledgeGraphProjectionService {
+
+    private final InMemoryKnowledgeAnswerArtifactGraphStore artifactGraphStore;
+    private final InMemoryKnowledgeAnswerResolutionDependencyGraph resolutionDependencyGraph;
+    private final InMemoryKnowledgeLineageStore lineageStore;
+    private final InMemoryKnowledgeSnapshotDependencyGraph snapshotDependencyGraph;
+
+    public DefaultKnowledgeGraphProjectionService(
+            InMemoryKnowledgeAnswerArtifactGraphStore artifactGraphStore,
+            InMemoryKnowledgeAnswerResolutionDependencyGraph resolutionDependencyGraph,
+            InMemoryKnowledgeLineageStore lineageStore,
+            InMemoryKnowledgeSnapshotDependencyGraph snapshotDependencyGraph) {
+        this.artifactGraphStore = artifactGraphStore;
+        this.resolutionDependencyGraph = resolutionDependencyGraph;
+        this.lineageStore = lineageStore;
+        this.snapshotDependencyGraph = snapshotDependencyGraph;
+    }
+
+    @Override
+    public KnowledgeGraphView artifactGraph(KnowledgeGraphQuery query) {
+        String artifactId = query.entityId();
+        List<KnowledgeGraphNode> nodes = new ArrayList<>();
+        List<KnowledgeGraphEdge> edges = new ArrayList<>();
+
+        nodes.add(KnowledgeGraphNode.of(artifactId, "ARTIFACT", artifactId, 1.0,
+                query.tenantId(), query.workspaceId(), query.projectId()));
+
+        List<KnowledgeAnswerArtifactRelation> fromRelations = artifactGraphStore.relationsFrom(artifactId);
+        List<KnowledgeAnswerArtifactRelation> toRelations = artifactGraphStore.relationsTo(artifactId);
+
+        for (KnowledgeAnswerArtifactRelation rel : fromRelations) {
+            nodes.add(KnowledgeGraphNode.of(rel.targetArtifactId(), "ARTIFACT",
+                    rel.targetArtifactId(), rel.confidence()));
+            edges.add(KnowledgeGraphEdge.of(rel.sourceArtifactId(), rel.targetArtifactId(),
+                    rel.type().name(), rel.confidence()));
+        }
+        for (KnowledgeAnswerArtifactRelation rel : toRelations) {
+            if (!rel.sourceArtifactId().equals(artifactId)) {
+                nodes.add(KnowledgeGraphNode.of(rel.sourceArtifactId(), "ARTIFACT",
+                        rel.sourceArtifactId(), rel.confidence()));
+                edges.add(KnowledgeGraphEdge.of(rel.sourceArtifactId(), rel.targetArtifactId(),
+                        rel.type().name(), rel.confidence()));
+            }
+        }
+
+        return KnowledgeGraphView.builder(KnowledgeGraphView.KnowledgeGraphType.ARTIFACT)
+                .nodes(layout3D(nodes, query.dimensions())).edges(edges)
+                .tenantId(query.tenantId()).workspaceId(query.workspaceId())
+                .projectId(query.projectId()).sessionId(query.sessionId())
+                .build();
+    }
+
+    @Override
+    public KnowledgeGraphView provenanceGraph(KnowledgeGraphQuery query) {
+        // Provenance graphs are assembled at response-generation time and stored
+        // by a ProvenanceGraphStore (not yet wired). Return root node as anchor.
+        return KnowledgeGraphView.builder(KnowledgeGraphView.KnowledgeGraphType.PROVENANCE)
+                .graphId("provenance-" + query.entityId())
+                .nodes(layout3D(List.of(KnowledgeGraphNode.of(
+                        query.entityId(), "RESPONSE", "Response: " + query.entityId(), 1.0,
+                        query.tenantId(), query.workspaceId(), query.projectId())), query.dimensions()))
+                .edges(List.of())
+                .tenantId(query.tenantId()).workspaceId(query.workspaceId())
+                .projectId(query.projectId()).sessionId(query.sessionId())
+                .build();
+    }
+
+    @Override
+    public KnowledgeGraphView claimGraph(KnowledgeGraphQuery query) {
+        return KnowledgeGraphView.builder(KnowledgeGraphView.KnowledgeGraphType.CLAIM)
+                .graphId("claim-" + query.entityId())
+                .nodes(List.of()).edges(List.of())
+                .tenantId(query.tenantId()).workspaceId(query.workspaceId())
+                .projectId(query.projectId()).sessionId(query.sessionId())
+                .build();
+    }
+
+    @Override
+    public KnowledgeGraphView fusionGraph(KnowledgeGraphQuery query) {
+        return KnowledgeGraphView.builder(KnowledgeGraphView.KnowledgeGraphType.FUSION)
+                .graphId("fusion-" + query.entityId())
+                .nodes(List.of()).edges(List.of())
+                .tenantId(query.tenantId()).workspaceId(query.workspaceId())
+                .projectId(query.projectId()).sessionId(query.sessionId())
+                .build();
+    }
+
+    @Override
+    public KnowledgeGraphView resolutionDependencyGraph(KnowledgeGraphQuery query) {
+        String resolutionId = query.entityId();
+        List<KnowledgeGraphNode> nodes = new ArrayList<>();
+        List<KnowledgeGraphEdge> edges = new ArrayList<>();
+
+        nodes.add(KnowledgeGraphNode.of(resolutionId, "RESOLUTION", "Resolution: " + resolutionId, 1.0));
+
+        List<KnowledgeAnswerResolutionDependency> deps =
+                resolutionDependencyGraph.dependenciesOf(resolutionId);
+        for (KnowledgeAnswerResolutionDependency dep : deps) {
+            double weight = dep.required() ? 1.0 : 0.5;
+            nodes.add(KnowledgeGraphNode.of(dep.targetId(), dep.type().name(), dep.targetId(), weight));
+            edges.add(KnowledgeGraphEdge.of(resolutionId, dep.targetId(), dep.type().name(), weight));
+        }
+
+        return KnowledgeGraphView.builder(KnowledgeGraphView.KnowledgeGraphType.RESOLUTION_DEPENDENCY)
+                .nodes(layout3D(nodes, query.dimensions())).edges(edges)
+                .tenantId(query.tenantId()).workspaceId(query.workspaceId())
+                .projectId(query.projectId()).sessionId(query.sessionId())
+                .build();
+    }
+
+    @Override
+    public KnowledgeGraphView lineageGraph(KnowledgeGraphQuery query) {
+        String nodeId = query.entityId();
+        List<KnowledgeGraphNode> nodes = new ArrayList<>();
+        List<KnowledgeGraphEdge> edges = new ArrayList<>();
+
+        nodes.add(KnowledgeGraphNode.of(nodeId, "KNOWLEDGE_ITEM", nodeId, 1.0));
+
+        try {
+            List<KnowledgeLineageEdge> lineageEdges =
+                    lineageStore.getAncestors(nodeId, query.maxDepth()).toCompletableFuture().get();
+            for (KnowledgeLineageEdge edge : lineageEdges) {
+                nodes.add(KnowledgeGraphNode.of(
+                        edge.sourceId(), "KNOWLEDGE_ITEM", edge.sourceId(), edge.confidence()));
+                nodes.add(KnowledgeGraphNode.of(
+                        edge.targetId(), "KNOWLEDGE_ITEM", edge.targetId(), edge.confidence()));
+                edges.add(KnowledgeGraphEdge.of(
+                        edge.sourceId(), edge.targetId(), edge.relation().name(), edge.confidence()));
+            }
+        } catch (InterruptedException | ExecutionException e) {
+            Thread.currentThread().interrupt();
+        }
+
+        return KnowledgeGraphView.builder(KnowledgeGraphView.KnowledgeGraphType.LINEAGE)
+                .nodes(layout3D(nodes, query.dimensions())).edges(edges)
+                .tenantId(query.tenantId()).workspaceId(query.workspaceId())
+                .projectId(query.projectId()).sessionId(query.sessionId())
+                .build();
+    }
+
+    @Override
+    public KnowledgeGraphView snapshotDependencyGraph(KnowledgeGraphQuery query) {
+        String snapshotId = query.entityId();
+        List<KnowledgeGraphNode> nodes = new ArrayList<>();
+        List<KnowledgeGraphEdge> edges = new ArrayList<>();
+
+        nodes.add(KnowledgeGraphNode.of(snapshotId, "SNAPSHOT", "Snapshot: " + snapshotId, 1.0));
+
+        KnowledgeSnapshotId snapshotKey = KnowledgeSnapshotId.of(snapshotId);
+        List<KnowledgeSnapshotDependency> deps =
+                snapshotDependencyGraph.transitiveDependencies(snapshotKey);
+
+        for (KnowledgeSnapshotDependency dep : deps) {
+            String depId = dep.targetId();
+            nodes.add(KnowledgeGraphNode.of(depId, "SNAPSHOT", "Snapshot: " + depId, 1.0));
+            edges.add(KnowledgeGraphEdge.of(snapshotId, depId, dep.type().name(), 1.0));
+        }
+
+        return KnowledgeGraphView.builder(KnowledgeGraphView.KnowledgeGraphType.SNAPSHOT_DEPENDENCY)
+                .nodes(layout3D(nodes, query.dimensions())).edges(edges)
+                .tenantId(query.tenantId()).workspaceId(query.workspaceId())
+                .projectId(query.projectId()).sessionId(query.sessionId())
+                .build();
+    }
+
+    @Override
+    public KnowledgeGraphView fullGraph(KnowledgeGraphQuery query) {
+        List<KnowledgeGraphNode> allNodes = new ArrayList<>();
+        List<KnowledgeGraphEdge> allEdges = new ArrayList<>();
+
+        // Lineage anchored at workspace as root
+        KnowledgeGraphQuery lineageQuery = new KnowledgeGraphQuery(
+                query.workspaceId(), query.tenantId(), query.workspaceId(),
+                query.projectId(), query.sessionId(), query.maxDepth(), query.dimensions());
+        KnowledgeGraphView lineage = lineageGraph(lineageQuery);
+        allNodes.addAll(lineage.nodes());
+        allEdges.addAll(lineage.edges());
+
+        return KnowledgeGraphView.builder(KnowledgeGraphView.KnowledgeGraphType.FULL)
+                .graphId("full-" + query.workspaceId())
+                .nodes(layout3D(allNodes, query.dimensions())).edges(allEdges)
+                .tenantId(query.tenantId()).workspaceId(query.workspaceId())
+                .projectId(query.projectId()).sessionId(query.sessionId())
+                .build();
+    }
+
+    private List<KnowledgeGraphNode> layout3D(List<KnowledgeGraphNode> rawNodes, int dimensions) {
+        LinkedHashMap<String, KnowledgeGraphNode> map = new LinkedHashMap<>();
+        int i = 0;
+        int total = rawNodes.size();
+        for (KnowledgeGraphNode n : rawNodes) {
+            if (!map.containsKey(n.id())) {
+                double x = n.x();
+                double y = n.y();
+                double z = n.z();
+                if (x == 0.0 && y == 0.0 && z == 0.0) {
+                    // Compute Fibonacci spherical 3D or circle 2D lattice
+                    if (dimensions == 3) {
+                        double phi = Math.acos(1.0 - 2.0 * (i + 0.5) / Math.max(1, total));
+                        double theta = Math.PI * (1.0 + Math.sqrt(5.0)) * i;
+                        double radius = 1.0 + (n.weight() * 0.5);
+                        x = radius * Math.sin(phi) * Math.cos(theta);
+                        y = radius * Math.sin(phi) * Math.sin(theta);
+                        z = radius * Math.cos(phi);
+                    } else {
+                        double theta = 2.0 * Math.PI * i / Math.max(1, total);
+                        double radius = 1.0 + (n.weight() * 0.5);
+                        x = radius * Math.cos(theta);
+                        y = radius * Math.sin(theta);
+                        z = 0.0;
+                    }
+                }
+                KnowledgeGraphNode placed = KnowledgeGraphNode.of3D(
+                        n.id(), n.type(), n.label(), n.weight(),
+                        Math.round(x * 1000.0) / 1000.0,
+                        Math.round(y * 1000.0) / 1000.0,
+                        Math.round(z * 1000.0) / 1000.0,
+                        n.tenantId(), n.workspaceId(), n.projectId()
+                );
+                map.put(n.id(), placed);
+                i++;
+            }
+        }
+        return List.copyOf(map.values());
+    }
+}

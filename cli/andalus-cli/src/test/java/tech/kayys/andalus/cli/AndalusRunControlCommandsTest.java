@@ -1,0 +1,62 @@
+package tech.kayys.andalus.cli;
+
+import org.junit.jupiter.api.Test;
+import picocli.CommandLine;
+
+import tech.kayys.andalus.cli.run.AndalusRunControlCommands;
+import tech.kayys.andalus.gollek.sdk.AndalusGollekSdk;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
+import java.util.Map;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+class AndalusRunControlCommandsTest {
+
+    @Test
+    void runControlCommandsAreRegisteredFromDedicatedModule() {
+        CommandLine root = commandLine();
+        CommandLine run = root.getSubcommands().get("run");
+        Map<String, CommandLine> subcommands = run.getSubcommands();
+
+        assertThat((Object) subcommands.get("wait").getCommand())
+                .isInstanceOf(AndalusRunControlCommands.WaitCommand.class);
+        assertThat((Object) subcommands.get("cancel").getCommand())
+                .isInstanceOf(AndalusRunControlCommands.CancelCommand.class);
+        assertThat((Object) subcommands.get("forget").getCommand())
+                .isInstanceOf(AndalusRunControlCommands.ForgetCommand.class);
+    }
+
+    @Test
+    void controlCommandsAcceptStandardHelpOption() {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        ByteArrayOutputStream err = new ByteArrayOutputStream();
+
+        int exitCode = AndalusGollekCli.execute(
+                AndalusGollekSdk.local(),
+                stream(out),
+                stream(err),
+                "run",
+                "cancel",
+                "--help");
+
+        assertThat(exitCode).isZero();
+        assertThat(out.toString(StandardCharsets.UTF_8))
+                .contains("Usage: andalus run cancel")
+                .contains("Request cancellation");
+        assertThat(err.toString(StandardCharsets.UTF_8)).isEmpty();
+    }
+
+    private static CommandLine commandLine() {
+        return new CommandLine(new AndalusGollekCli(
+                AndalusGollekSdk.local(),
+                stream(new ByteArrayOutputStream()),
+                stream(new ByteArrayOutputStream())));
+    }
+
+    private static PrintStream stream(ByteArrayOutputStream output) {
+        return new PrintStream(output, true, StandardCharsets.UTF_8);
+    }
+}

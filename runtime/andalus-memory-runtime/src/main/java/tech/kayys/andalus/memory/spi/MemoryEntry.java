@@ -1,0 +1,22 @@
+package tech.kayys.andalus.memory.spi;
+
+import java.time.Instant;
+import java.util.Map;
+
+/**
+ * Represents a unit of information in the agent's memory.
+ */
+public record MemoryEntry(
+        String id,
+        String content,
+        Instant timestamp,
+        Map<String, Object> metadata) {
+
+    public String getContent() {
+        return content;
+    }
+
+    public Map<String, Object> getMetadata() {
+        return metadata;
+    }
+}

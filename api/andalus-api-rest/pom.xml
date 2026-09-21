@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>tech.kayys.andalus</groupId>
+        <artifactId>andalus-parent</artifactId>
+        <version>0.0.1</version>
+        <relativePath>../../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>andalus-api-rest</artifactId>
+    <name>Andalus API REST</name>
+    <description>REST API for Andalus Platform</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>tech.kayys.andalus</groupId>
+            <artifactId>andalus-gollek-sdk</artifactId>
+            <version>${andalus-gollek-sdk.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>tech.kayys.alkhawarizm</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>tech.kayys.gollek</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+
+
+        <!-- Active agent execution and skill contracts -->
+        <dependency>
+            <groupId>tech.kayys.andalus</groupId>
+            <artifactId>andalus-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>tech.kayys.andalus</groupId>
+            <artifactId>andalus-spi</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>tech.kayys.andalus</groupId>
+            <artifactId>andalus-knowledge</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>tech.kayys.andalus</groupId>
+            <artifactId>andalus-knowledge-runtime</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>tech.kayys.andalus</groupId>
+            <artifactId>andalus-memory</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>tech.kayys.andalus</groupId>
+            <artifactId>andalus-memory-runtime</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>tech.kayys.andalus</groupId>
+            <artifactId>andalus-anp</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>tech.kayys.andalus</groupId>
+            <artifactId>andalus-security-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>tech.kayys.andalus</groupId>
+            <artifactId>andalus-security-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>tech.kayys.andalus</groupId>
+            <artifactId>andalus-execution-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>tech.kayys.andalus</groupId>
+            <artifactId>andalus-execution-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>tech.kayys.andalus</groupId>
+            <artifactId>andalus-state-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>tech.kayys.andalus</groupId>
+            <artifactId>andalus-state-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- REST runtime support -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-rest-jackson</artifactId>
+        </dependency>
+
+        <!-- Mutiny -->
+        <dependency>
+            <groupId>io.smallrye.reactive</groupId>
+            <artifactId>mutiny</artifactId>
+        </dependency>
+
+        <!-- Testing -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+</project>

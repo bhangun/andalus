@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>tech.kayys.andalus</groupId>
+        <artifactId>andalus-parent</artifactId>
+        <version>0.0.1</version>
+        <relativePath>../../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>andalus-graph-parent</artifactId>
+    <packaging>pom</packaging>
+
+    <name>Andalus Graph Executors</name>
+    <description>Graph-based storage executors for AI agents</description>
+
+    <modules>
+       
+        <module>andalus-graph-inmemory</module>
+        <module>andalus-graph-neo4j</module>
+        
+    </modules>
+
+    <properties>
+        <maven.compiler.source>25</maven.compiler.source>
+        <maven.compiler.target>25</maven.compiler.target>
+        <neo4j-java-driver.version>5.18.0</neo4j-java-driver.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>tech.kayys.andalus</groupId>
+                <artifactId>andalus-graph-core</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>org.neo4j.driver</groupId>
+                <artifactId>neo4j-java-driver</artifactId>
+                <version>${neo4j-java-driver.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

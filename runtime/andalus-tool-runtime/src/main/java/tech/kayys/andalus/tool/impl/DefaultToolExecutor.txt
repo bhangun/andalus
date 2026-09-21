@@ -1,0 +1,36 @@
+package tech.kayys.andalus.tool.impl;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import tech.kayys.andalus.tool.ToolExecutor;
+import tech.kayys.andalus.tool.ToolRegistry;
+import tech.kayys.andalus.tool.ToolInvocation;
+import tech.kayys.andalus.tool.ToolContext;
+import tech.kayys.andalus.tool.ToolResult;
+import tech.kayys.andalus.tool.Tool;
+import tech.kayys.andalus.tool.validation.ToolArgumentValidator;
+
+import java.util.concurrent.CompletableFuture;
+
+@ApplicationScoped
+public class DefaultToolExecutor implements ToolExecutor {
+
+    @Inject
+    ToolRegistry toolRegistry;
+    
+    private final ToolArgumentValidator validator = new ToolArgumentValidator();
+
+    @Override
+    public CompletableFuture<ToolResult> execute(ToolInvocation invocation, ToolContext context) {
+        return toolRegistry.findByName(invocation.name())
+                .map(tool -> {
+                    try {
+                        validator.validate(tool, invocation.arguments());
+                        return tool.execute(invocation, context);
+                    } catch (Exception e) {
+                        return CompletableFuture.<ToolResult>failedFuture(e);
+                    }
+                })
+                .orElseGet(() -> CompletableFuture.failedFuture(new IllegalArgumentException("Tool not found: " + invocation.name())));
+    }
+}

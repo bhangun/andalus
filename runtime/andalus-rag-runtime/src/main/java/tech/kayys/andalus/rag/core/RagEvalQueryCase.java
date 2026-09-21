@@ -1,0 +1,16 @@
+package tech.kayys.andalus.rag.core;
+
+import java.util.List;
+import java.util.Map;
+
+public record RagEvalQueryCase(
+        String id,
+        String query,
+        List<String> expectedIds,
+        Map<String, Object> filters) {
+
+    public RagEvalQueryCase {
+        expectedIds = RagCollections.copyList(expectedIds);
+        filters = RagMetadata.copy(filters);
+    }
+}

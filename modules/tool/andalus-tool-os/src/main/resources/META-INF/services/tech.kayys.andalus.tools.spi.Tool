@@ -1,0 +1,14 @@
+tech.kayys.andalus.tool.os.BashTool
+tech.kayys.andalus.tool.os.CreateDirTool
+tech.kayys.andalus.tool.os.EditFileTool
+tech.kayys.andalus.tool.os.FetchUrlTool
+tech.kayys.andalus.tool.os.GlobTool
+tech.kayys.andalus.tool.os.GrepTool
+tech.kayys.andalus.tool.os.ListDirTool
+tech.kayys.andalus.tool.os.MoveTool
+tech.kayys.andalus.tool.os.PatchTool
+tech.kayys.andalus.tool.os.ReadFileTool
+tech.kayys.andalus.tool.os.SearchFilesTool
+tech.kayys.andalus.tool.os.ThinkTool
+tech.kayys.andalus.tool.os.WebSearchTool
+tech.kayys.andalus.tool.os.WriteFileTool

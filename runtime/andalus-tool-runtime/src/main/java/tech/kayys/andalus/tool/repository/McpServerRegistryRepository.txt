@@ -1,0 +1,21 @@
+package tech.kayys.andalus.tool.repository;
+
+import io.smallrye.mutiny.Uni;
+import tech.kayys.andalus.tool.entity.McpServerRegistry;
+
+import java.util.List;
+
+public interface McpServerRegistryRepository {
+
+    Uni<McpServerRegistry> findByRequestIdAndName(String requestId, String name);
+
+    Uni<List<McpServerRegistry>> listByRequestId(String requestId);
+
+    Uni<List<McpServerRegistry>> listScheduledCandidates();
+
+    Uni<McpServerRegistry> save(McpServerRegistry entity);
+
+    Uni<McpServerRegistry> update(McpServerRegistry entity);
+
+    Uni<Boolean> deleteByRequestIdAndName(String requestId, String name);
+}

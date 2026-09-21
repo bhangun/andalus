@@ -1,0 +1,15 @@
+package tech.kayys.andalus.rag.core;
+
+import java.util.List;
+import java.util.Map;
+
+public record RagResult(
+        RagQuery query,
+        List<RagScoredChunk> chunks,
+        String answer,
+        Map<String, Object> metadata) {
+
+    public RagResult {
+        metadata = RagMetadata.copy(metadata);
+    }
+}

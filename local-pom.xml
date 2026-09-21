@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>tech.kayys.andalus</groupId>
+    <artifactId>andalus-local-aggregator</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>Andalus local build aggregator</name>
+    <modules>
+        <module>sdk/andalus-gollek-sdk</module>
+        <module>api/andalus-api-grpc</module>
+        <module>cli/andalus-gollek-cli</module>
+    </modules>
+</project>

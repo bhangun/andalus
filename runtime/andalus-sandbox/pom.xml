@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>tech.kayys.andalus</groupId>
+    <artifactId>andalus-parent</artifactId>
+    <version>0.0.1</version>
+    <relativePath>../../pom.xml</relativePath>
+  </parent>
+
+  <artifactId>andalus-sandbox</artifactId>
+  <packaging>jar</packaging>
+  <name>Andalus Sandbox</name>
+  <description>Secure sandbox runtimes for agent execution (Docker, Wasm, Firecracker).</description>
+
+  <dependencies>
+    <!-- Core dependencies -->
+    <dependency>
+      <groupId>tech.kayys.andalus</groupId>
+      <artifactId>andalus-spi</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>tech.kayys.andalus</groupId>
+      <artifactId>andalus-harness</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>tech.kayys.andalus</groupId>
+      <artifactId>andalus-extension</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>tech.kayys.andalus</groupId>
+      <artifactId>andalus-runtime-spi</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>tech.kayys.andalus</groupId>
+      <artifactId>andalus-tool</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>tech.kayys.andalus</groupId>
+      <artifactId>andalus-plugin-spi</artifactId>
+      <version>${project.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- Mutiny for reactive programming -->
+    <dependency>
+      <groupId>io.smallrye.reactive</groupId>
+      <artifactId>mutiny</artifactId>
+    </dependency>
+
+    <!-- Testing -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>

@@ -1,0 +1,11 @@
+package tech.kayys.andalus.tool.security;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import tech.kayys.andalus.tool.entity.ToolGuardrails;
+
+@ApplicationScoped
+public class RateLimiter {
+    public void checkLimit(String requestId, String toolId, ToolGuardrails guardrails) {
+        // Stub implementation
+    }
+}

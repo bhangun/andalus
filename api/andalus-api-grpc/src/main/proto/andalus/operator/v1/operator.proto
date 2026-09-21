@@ -1,0 +1,316 @@
+syntax = "proto3";
+
+package tech.kayys.andalus.operator.v1;
+
+option java_multiple_files = true;
+option java_package = "tech.kayys.andalus.operator.v1";
+option java_outer_classname = "OperatorProto";
+
+// ─── Common Context & Results ───────────────────────────────────────────────
+
+message OperatorRequestContext {
+  string correlation_id = 1;
+  string request_id = 2;
+  map<string, string> attributes = 3;
+}
+
+message OperationResult {
+  string operation_id = 1;
+  string resource_id = 2;
+}
+
+// ─── Plugin Models ─────────────────────────────────────────────────────────
+
+message PluginSummary {
+  string id = 1;
+  string name = 2;
+  string version = 3;
+  string state = 4;
+  string description = 5;
+}
+
+message ListPluginsRequest {
+  OperatorRequestContext context = 1;
+}
+
+message ListPluginsResponse {
+  repeated PluginSummary plugins = 1;
+}
+
+message GetPluginRequest {
+  OperatorRequestContext context = 1;
+  string plugin_id = 2;
+}
+
+message GetPluginResponse {
+  PluginSummary plugin = 1;
+}
+
+message PluginOperationRequest {
+  OperatorRequestContext context = 1;
+  string plugin_id = 2;
+}
+
+// ─── Sandbox Models ────────────────────────────────────────────────────────
+
+message SandboxSummary {
+  string id = 1;
+  string tenant_id = 2;
+  string state = 3;
+  string provider_id = 4;
+  string created_at = 5;
+}
+
+message SandboxHealth {
+  string sandbox_id = 1;
+  string status = 2;
+  string summary = 3;
+  string checked_at = 4;
+}
+
+message SandboxMetrics {
+  string sandbox_id = 1;
+  map<string, double> metrics = 2;
+}
+
+message SandboxDiagnostics {
+  string sandbox_id = 1;
+  string status = 2;
+  repeated DiagnosticIssue issues = 3;
+}
+
+message ListSandboxesRequest {
+  OperatorRequestContext context = 1;
+}
+
+message ListSandboxesResponse {
+  repeated SandboxSummary sandboxes = 1;
+}
+
+message SandboxRequest {
+  OperatorRequestContext context = 1;
+  string sandbox_id = 2;
+}
+
+// ─── Tool and Capability Models ─────────────────────────────────────────────
+
+message CapabilitySummary {
+  string id = 1;
+  string type = 2;
+  string provider_id = 3;
+  repeated string tags = 4;
+}
+
+message ToolSummary {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+message ListToolsRequest {
+  OperatorRequestContext context = 1;
+}
+
+message ListToolsResponse {
+  repeated ToolSummary tools = 1;
+}
+
+message ToolRequest {
+  OperatorRequestContext context = 1;
+  string tool_id = 2;
+}
+
+message ListCapabilitiesRequest {
+  OperatorRequestContext context = 1;
+}
+
+message ListCapabilitiesByTypeRequest {
+  OperatorRequestContext context = 1;
+  string type = 2;
+}
+
+message ListCapabilitiesByTagRequest {
+  OperatorRequestContext context = 1;
+  string tag = 2;
+}
+
+message ListCapabilitiesResponse {
+  repeated CapabilitySummary capabilities = 1;
+}
+
+// ─── Execution Models ───────────────────────────────────────────────────────
+
+message ExecutionSummary {
+  string execution_id = 1;
+  string tenant_id = 2;
+  string state = 3;
+  string workflow_id = 4;
+  string created_at = 5;
+  string updated_at = 6;
+}
+
+message ListExecutionsRequest {
+  OperatorRequestContext context = 1;
+}
+
+message ListExecutionsResponse {
+  repeated ExecutionSummary executions = 1;
+}
+
+message ExecutionRequest {
+  OperatorRequestContext context = 1;
+  string execution_id = 2;
+}
+
+// ─── Session Models ────────────────────────────────────────────────────────
+
+message SessionSummary {
+  string session_id = 1;
+  string tenant_id = 2;
+  string state = 3;
+  string created_at = 4;
+  string updated_at = 5;
+}
+
+message ListSessionsRequest {
+  OperatorRequestContext context = 1;
+}
+
+message ListSessionsResponse {
+  repeated SessionSummary sessions = 1;
+}
+
+message SessionRequest {
+  OperatorRequestContext context = 1;
+  string session_id = 2;
+}
+
+// ─── Diagnostics Models ────────────────────────────────────────────────────
+
+message DiagnosticIssue {
+  string code = 1;
+  string severity = 2;
+  string message = 3;
+  map<string, string> attributes = 4;
+}
+
+message DiagnosticResult {
+  string component_type = 1;
+  string component_id = 2;
+  string status = 3;
+  string checked_at = 4;
+  string summary = 5;
+  repeated DiagnosticIssue issues = 6;
+}
+
+message DiagnosticReport {
+  string checked_at = 1;
+  string overall_status = 2;
+  repeated DiagnosticResult results = 3;
+}
+
+message DiagnoseAllRequest {
+  OperatorRequestContext context = 1;
+}
+
+message DiagnoseTypeRequest {
+  OperatorRequestContext context = 1;
+  string type = 2;
+}
+
+message DiagnoseComponentRequest {
+  OperatorRequestContext context = 1;
+  string type = 2;
+  string component_id = 3;
+}
+
+// ─── Configuration Models ──────────────────────────────────────────────────
+
+message ConfigurationSummary {
+  string id = 1;
+  string path = 2;
+  string type = 3;
+  string source = 4;
+  string status = 5;
+  string loaded_at = 6;
+  string last_modified_at = 7;
+  bool active = 8;
+  bool mutable = 9;
+  map<string, string> values = 10;
+}
+
+message ListConfigurationsRequest {
+  OperatorRequestContext context = 1;
+  bool include_values = 2;
+}
+
+message ListConfigurationsResponse {
+  repeated ConfigurationSummary configurations = 1;
+}
+
+message ConfigurationRequest {
+  OperatorRequestContext context = 1;
+  string configuration_id = 2;
+}
+
+message UpdateConfigurationRequest {
+  OperatorRequestContext context = 1;
+  string configuration_id = 2;
+  map<string, string> values = 3;
+  bool activate = 4;
+}
+
+// ─── Unified Operator Service ───────────────────────────────────────────────
+
+service OperatorService {
+
+  // Plugin
+  rpc ListPlugins(ListPluginsRequest) returns (ListPluginsResponse);
+  rpc GetPlugin(GetPluginRequest) returns (GetPluginResponse);
+  rpc EnablePlugin(PluginOperationRequest) returns (OperationResult);
+  rpc DisablePlugin(PluginOperationRequest) returns (OperationResult);
+  rpc UnloadPlugin(PluginOperationRequest) returns (OperationResult);
+
+  // Sandbox
+  rpc ListSandboxes(ListSandboxesRequest) returns (ListSandboxesResponse);
+  rpc GetSandbox(SandboxRequest) returns (SandboxSummary);
+  rpc GetSandboxHealth(SandboxRequest) returns (SandboxHealth);
+  rpc GetSandboxMetrics(SandboxRequest) returns (SandboxMetrics);
+  rpc GetSandboxDiagnostics(SandboxRequest) returns (SandboxDiagnostics);
+  rpc StopSandbox(SandboxRequest) returns (OperationResult);
+  rpc DestroySandbox(SandboxRequest) returns (OperationResult);
+
+  // Tool & Capability
+  rpc ListTools(ListToolsRequest) returns (ListToolsResponse);
+  rpc GetTool(ToolRequest) returns (ToolSummary);
+  rpc ListCapabilities(ListCapabilitiesRequest) returns (ListCapabilitiesResponse);
+  rpc ListCapabilitiesByType(ListCapabilitiesByTypeRequest) returns (ListCapabilitiesResponse);
+  rpc ListCapabilitiesByTag(ListCapabilitiesByTagRequest) returns (ListCapabilitiesResponse);
+
+  // Execution
+  rpc ListExecutions(ListExecutionsRequest) returns (ListExecutionsResponse);
+  rpc GetExecution(ExecutionRequest) returns (ExecutionSummary);
+  rpc PauseExecution(ExecutionRequest) returns (OperationResult);
+  rpc ResumeExecution(ExecutionRequest) returns (OperationResult);
+  rpc CancelExecution(ExecutionRequest) returns (OperationResult);
+  rpc RetryExecution(ExecutionRequest) returns (OperationResult);
+
+  // Session
+  rpc ListSessions(ListSessionsRequest) returns (ListSessionsResponse);
+  rpc GetSession(SessionRequest) returns (SessionSummary);
+  rpc SuspendSession(SessionRequest) returns (OperationResult);
+  rpc ResumeSession(SessionRequest) returns (OperationResult);
+  rpc CloseSession(SessionRequest) returns (OperationResult);
+
+  // Diagnostics
+  rpc DiagnoseAll(DiagnoseAllRequest) returns (DiagnosticReport);
+  rpc DiagnoseType(DiagnoseTypeRequest) returns (DiagnosticReport);
+  rpc DiagnoseComponent(DiagnoseComponentRequest) returns (DiagnosticResult);
+
+  // Configuration
+  rpc ListConfigurations(ListConfigurationsRequest) returns (ListConfigurationsResponse);
+  rpc GetConfiguration(ConfigurationRequest) returns (ConfigurationSummary);
+  rpc GetActiveConfiguration(OperatorRequestContext) returns (ConfigurationSummary);
+  rpc UpdateConfiguration(UpdateConfigurationRequest) returns (ConfigurationSummary);
+  rpc ActivateConfiguration(ConfigurationRequest) returns (OperationResult);
+}

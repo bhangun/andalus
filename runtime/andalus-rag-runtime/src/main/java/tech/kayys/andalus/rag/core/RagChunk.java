@@ -1,0 +1,25 @@
+package tech.kayys.andalus.rag.core;
+
+import java.util.Map;
+import java.util.UUID;
+
+public record RagChunk(
+        String id,
+        String documentId,
+        int chunkIndex,
+        String text,
+        Map<String, Object> metadata) {
+
+    public RagChunk {
+        metadata = RagMetadata.copy(metadata);
+    }
+
+    public static RagChunk of(String documentId, int chunkIndex, String text, Map<String, Object> metadata) {
+        return new RagChunk(
+                UUID.randomUUID().toString(),
+                documentId,
+                chunkIndex,
+                text,
+                metadata);
+    }
+}

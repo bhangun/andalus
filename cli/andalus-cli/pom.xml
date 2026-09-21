@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>tech.kayys.andalus</groupId>
+        <artifactId>andalus-parent</artifactId>
+        <version>0.0.1</version>
+        <relativePath>../../pom.xml</relativePath>
+    </parent>
+
+    <properties>
+        <!-- Peutui version -->
+        <peutui.version>0.1.1-SNAPSHOT</peutui.version>
+        <maven.compiler.source>25</maven.compiler.source>
+        <maven.compiler.target>25</maven.compiler.target>
+    </properties>
+
+    <artifactId>andalus-cli</artifactId>
+    <name>Andalus CLI</name>
+    <description>
+        Product CLI and terminal UI for the Andalus agentic platform.
+    </description>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.quarkus.platform</groupId>
+                <artifactId>quarkus-bom</artifactId>
+                <version>3.13.0</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>tech.kayys.gollek</groupId>
+            <artifactId>gollek-sdk</artifactId>
+            <version>0.1.0-SNAPSHOT</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>tech.kayys.alkhawarizm</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>tech.kayys.gollek</groupId>
+            <artifactId>gollek-sdk-core</artifactId>
+            <version>0.1.0-SNAPSHOT</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>tech.kayys.alkhawarizm</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>tech.kayys.gollek</groupId>
+            <artifactId>gollek-spi</artifactId>
+            <version>0.1.0-SNAPSHOT</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>tech.kayys.alkhawarizm</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>tech.kayys.gollek</groupId>
+            <artifactId>gollek-spi-inference</artifactId>
+            <version>0.1.0-SNAPSHOT</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>tech.kayys.alkhawarizm</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>tech.kayys.peutui</groupId>
+            <artifactId>peutui-widgets</artifactId>
+            <version>${peutui.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>tech.kayys.peutui</groupId>
+            <artifactId>peutui-terminal</artifactId>
+            <version>${peutui.version}</version>
+        </dependency>
+        <!-- andalus-tui kept for transitive dependency chain (andalus-gollek-sdk → andalus-agent).
+             AndalusPeutuiApp replaces ReplUi at the source level, but the JAR is still needed. -->
+        <dependency>
+            <groupId>tech.kayys.andalus</groupId>
+            <artifactId>andalus-tui</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>tech.kayys.peutui</groupId>
+            <artifactId>peutui-agent-api</artifactId>
+            <version>${peutui.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>tech.kayys.peutui</groupId>
+            <artifactId>peutui-provider-api</artifactId>
+            <version>${peutui.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>tech.kayys.peutui</groupId>
+            <artifactId>peutui-session-api</artifactId>
+            <version>${peutui.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>tech.kayys.peutui</groupId>
+            <artifactId>peutui-project-api</artifactId>
+            <version>${peutui.version}</version>
+        </dependency>
+
+
+        <!-- andalus-coder and andalus-skills-builtin moved to Kindi domain agent -->
+
+        <dependency>
+            <groupId>tech.kayys.andalus</groupId>
+            <artifactId>andalus-gollek-sdk</artifactId>
+            <version>${andalus-gollek-sdk.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>tech.kayys.alkhawarizm</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>tech.kayys.gollek</groupId>
+                    <artifactId>gollek-sdk-local</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>tech.kayys.andalus</groupId>
+            <artifactId>andalus-knowledge</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>tech.kayys.andalus</groupId>
+            <artifactId>andalus-knowledge-runtime</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>tech.kayys.andalus</groupId>
+            <artifactId>andalus-memory-runtime</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>info.picocli</groupId>
+            <artifactId>picocli</artifactId>
+            <version>4.7.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.weld.se</groupId>
+            <artifactId>weld-se-core</artifactId>
+            <version>5.1.2.Final</version>
+        </dependency>
+
+
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-inprocess</artifactId>
+            <version>1.65.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>tech.kayys.andalus</groupId>
+            <artifactId>andalus-api-grpc</artifactId>
+            <version>${project.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>tech.kayys.alkhawarizm</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>4.33.2</version>
+        </dependency>
+
+        <!-- GGUF/llama.cpp inference provider — registers LLMProvider via SPI so
+             local GGUF models can run inference without subprocess fallback. -->
+
+
+        <dependency>
+            <groupId>tech.kayys.andalus</groupId>
+            <artifactId>andalus-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>../../pool/skills</directory>
+                <targetPath>default-skills</targetPath>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>info.picocli</groupId>
+                            <artifactId>picocli-codegen</artifactId>
+                            <version>${picocli.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                    <compilerArgs>
+                        <arg>-Aproject=${project.groupId}/${project.artifactId}</arg>
+                    </compilerArgs>
+                    <testExcludes>
+                        <testExclude>**/AndalusRun*CommandsTest.java</testExclude>
+                        <testExclude>**/AndalusRunRequestOptionsTest.java</testExclude>
+                        <testExclude>**/AndalusCliQueryOptionsTest.java</testExclude>
+                    </testExcludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.5.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>tech.kayys.andalus.cli.AndalusGollekCli</mainClass>
+                                </transformer>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                            </transformers>
+                            <filters>
+                                <filter>
+                                    <artifact>io.quarkus:*</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/beans.xml</exclude>
+                                    </excludes>
+                                </filter>
+                                <filter>
+                                    <artifact>io.quarkus.arc:*</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/beans.xml</exclude>
+                                    </excludes>
+                                </filter>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/*.SF</exclude>
+                                        <exclude>META-INF/*.DSA</exclude>
+                                        <exclude>META-INF/*.RSA</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>native</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.graalvm.buildtools</groupId>
+                        <artifactId>native-maven-plugin</artifactId>
+                        <version>0.9.28</version>
+                        <extensions>true</extensions>
+                        <executions>
+                            <execution>
+                                <id>build-native</id>
+                                <goals>
+                                    <goal>compile-no-fork</goal>
+                                </goals>
+                                <phase>package</phase>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <imageName>andalus-cli</imageName>
+                            <mainClass>tech.kayys.andalus.cli.AndalusGollekCli</mainClass>
+                            <buildArgs>
+                                <buildArg>--enable-native-access=ALL-UNNAMED</buildArg>
+                                <buildArg>-H:+JNI</buildArg>
+                                <buildArg>--no-fallback</buildArg>
+                                <buildArg>-Dorg.jline.terminal.jansi=false</buildArg>
+                                <buildArg>-Dorg.jline.terminal.jna=false</buildArg>
+                                <buildArg>--initialize-at-build-time=org.jboss.logmanager,org.slf4j,io.quarkus,org.jboss.logging,io.smallrye,io.netty,io.vertx,com.fasterxml,org.hibernate</buildArg>
+                            </buildArgs>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>

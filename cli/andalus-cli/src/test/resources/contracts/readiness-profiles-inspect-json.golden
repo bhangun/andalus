@@ -1,0 +1,1 @@
+{"product":"Andalus","profileId":"minimal","profile":{"profileId":"minimal","description":"Smallest startup profile for storage and contract-integrity checks.","defaultProfile":false,"productionProfile":false,"componentCount":2,"readinessIds":["andalus.storage.readiness","andalus.contract.integrity.readiness"]}}

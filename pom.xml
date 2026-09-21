@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>tech.kayys.andalus</groupId>
+    <artifactId>andalus-parent</artifactId>
+    <version>0.0.1</version>
+    <packaging>pom</packaging>
+
+    <name>andalus-parent</name>
+    <description>andalus Agentic</description>
+
+    <distributionManagement>
+        <!-- GitHub Packages: replace 'workkayys' and 'andalus' if your repo slug differs -->
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages — Andalus (Release)</name>
+            <url>https://maven.pkg.github.com/workkayys/andalus</url>
+        </repository>
+        <snapshotRepository>
+            <id>github</id>
+            <name>GitHub Packages — Andalus (Snapshot)</name>
+            <url>https://maven.pkg.github.com/workkayys/andalus</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+
+    <properties>
+        <maven.compiler.source>25</maven.compiler.source>
+        <maven.compiler.target>25</maven.compiler.target>
+        <gollek.version>0.1.0-SNAPSHOT</gollek.version>
+        <gamelan.version>0.1.1</gamelan.version>
+        <andalus-gollek-sdk.version>1.0.0-SNAPSHOT</andalus-gollek-sdk.version>
+        <maven.compiler.plugin.version>3.13.0</maven.compiler.plugin.version>
+        <jandex.maven.plugin.version>3.2.7</jandex.maven.plugin.version>
+        <quarkus.platform.version>3.32.2</quarkus.platform.version>
+        <tamboui.version>0.2.0</tamboui.version>
+        <assertj.version>3.26.3</assertj.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Import Quarkus BOM -->
+            <dependency>
+                <groupId>io.quarkus.platform</groupId>
+                <artifactId>quarkus-bom</artifactId>
+                <version>${quarkus.platform.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- AssertJ for testing -->
+            <dependency>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-core</artifactId>
+                <version>${assertj.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>tech.kayys.andalus</groupId>
+                <artifactId>andalus-tool</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>tech.kayys.andalus</groupId>
+                <artifactId>andalus-gollek-sdk</artifactId>
+                <version>${andalus-gollek-sdk.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+
+    </dependencies>
+
+    <modules>
+        <module>api/andalus-api-grpc</module>
+        <module>api/andalus-api-rest</module>
+        <module>api/andalus-sdk</module>
+        <!-- framework is now a standalone repo: andalus-framework -->
+        <!-- Run `mvn install` in andalus-framework first, then build this repo -->
+        <module>runtime/andalus-sandbox</module>
+        <module>runtime/andalus-runtime-core</module>
+        <module>runtime/andalus-backend-gamelan</module>
+        <module>runtime/andalus-agent-runtime</module>
+        <module>runtime/andalus-tool-runtime</module>
+        <module>runtime/andalus-rag-runtime</module>
+        <module>runtime/andalus-builtin-tools</module>
+        <module>runtime/andalus-runtime-provider</module>
+        <module>runtime/andalus-graph-runtime</module>
+        
+        <!-- Guardrails -->
+        <!-- <module>runtime/andalus-guardrails-runtime</module> -->
+        <module>runtime/andalus-hitl-runtime</module>
+        <module>runtime/andalus-workflow-runtime</module>
+        <module>runtime/andalus-knowledge-runtime</module>
+        <module>runtime/andalus-memory-runtime</module>
+        <!-- andalus-agent-runner is a Quarkus executable app requiring Redis/GollekSdk/Micrometer at build time.
+             Build separately when the full infrastructure is available. -->
+        <!-- <module>runtime/andalus-agent-runner</module> -->
+
+        <!-- Feature Modules -->
+        <module>modules/graph</module>
+        <module>modules/guardrails</module>
+        <module>modules/rag</module>
+        <module>modules/vector</module>
+        <module>modules/provider</module>
+        <!-- Tool SPI must be before agent modules that depend on it -->
+        <module>modules/tool</module>
+
+
+        <!-- CLI -->
+        <module>cli/andalus-tui</module>
+        <module>cli/andalus-cli</module>
+        <!-- agent-cli: stale ref to tech.kayys.alkhawarizm.spi.model — needs alkhawarizm SPI realignment -->
+        <!-- <module>cli/agent-cli</module> -->
+    </modules>
+
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>Maven Central</name>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
+        <repository>
+            <id>jboss-public-repository-group</id>
+            <name>JBoss Public Repository Group</name>
+            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+        </repository>
+        <repository>
+            <id>sonatype</id>
+            <name>Sonatype OSS Snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <releases><enabled>false</enabled></releases>
+            <snapshots><enabled>true</enabled></snapshots>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>central</id>
+            <name>Maven Central</name>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>jboss-public-repository-group</id>
+            <name>JBoss Public Repository Group</name>
+            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <profiles>
+
+        <!-- CI-friendly profile: disables Quarkus DevServices which require Docker or configured datasources.
+             Use with: mvn -Pci ...  -->
+        <profile>
+            <id>ci</id>
+            <properties>
+                <quarkus.datasource.devservices.enabled>false</quarkus.datasource.devservices.enabled>
+                <!-- Some modules may still require explicit DB config; this profile is intended for packaging without starting devservices. -->
+            </properties>
+        </profile>
+    </profiles>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven.compiler.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>io.smallrye</groupId>
+                    <artifactId>jandex-maven-plugin</artifactId>
+                    <version>${jandex.maven.plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <!--
+                Keeps the active agentic framework backend-agnostic. Runtime
+                adapters may use SDK/SPI modules, but should not drag in the
+                full Gamelan engine implementation transitively.
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>3.5.0</version>
+                <executions>
+                    <execution>
+                        <id>enforce-sdk-only-dependencies</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <bannedDependencies>
+                                    <searchTransitive>true</searchTransitive>
+                                    <excludes>
+                                        <exclude>tech.kayys.gamelan:gamelan-engine-core</exclude>
+                                    </excludes>
+                                    <message>
+                                        andalus-gollek modules must not depend on gamelan-engine-core.
+                                        Use gamelan-engine-spi and gamelan-sdk-*-core instead.
+                                        See DEPENDENCIES.md for the allowed dependency policy.
+                                    </message>
+                                </bannedDependencies>
+                            </rules>
+                            <fail>true</fail>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

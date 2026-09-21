@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>tech.kayys.andalus</groupId>
+        <artifactId>andalus-parent</artifactId>
+        <version>0.0.1</version>
+        <relativePath>../../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>andalus-backend-gamelan</artifactId>
+    <name>Agent Backend Gamelan Adapter</name>
+    <description>
+        Backend adapter that wraps Gamelan SDK to implement the backend-agnostic
+        WorkflowBackend SPI. Pure Java implementation with no Quarkus runtime.
+    </description>
+
+    <properties>
+        <maven.compiler.source>25</maven.compiler.source>
+        <maven.compiler.target>25</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <!-- Backend-agnostic SPI -->
+        <dependency>
+            <groupId>tech.kayys.andalus</groupId>
+            <artifactId>andalus-spi</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- Gamelan SDK (the backend we're adapting to) -->
+        <dependency>
+            <groupId>tech.kayys.gamelan</groupId>
+            <artifactId>gamelan-sdk-client-core</artifactId>
+            <version>${gamelan.version}</version>
+        </dependency>
+
+        <!-- Gamelan Engine SPI -->
+        <dependency>
+            <groupId>tech.kayys.gamelan</groupId>
+            <artifactId>gamelan-engine-spi</artifactId>
+            <version>${gamelan.version}</version>
+        </dependency>
+
+        <!-- Gamelan Executor SDK Core -->
+        <dependency>
+            <groupId>tech.kayys.gamelan</groupId>
+            <artifactId>gamelan-sdk-executor-core</artifactId>
+            <version>${gamelan.version}</version>
+        </dependency>
+
+        <!-- Andalus Runtime Core -->
+        <dependency>
+            <groupId>tech.kayys.andalus</groupId>
+            <artifactId>andalus-runtime-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- CDI API -->
+        <dependency>
+            <groupId>jakarta.enterprise</groupId>
+            <artifactId>jakarta.enterprise.cdi-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Logging -->
+        <dependency>
+            <groupId>org.jboss.logging</groupId>
+            <artifactId>jboss-logging</artifactId>
+        </dependency>
+
+        <!-- Testing -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.10.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+</project>
