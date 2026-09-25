@@ -1,10 +1,10 @@
 package tech.kayys.andalus.cli;
 
-import tech.kayys.andalus.gollek.sdk.AndalusInferenceService;
-import tech.kayys.andalus.gollek.sdk.AndalusInferenceServiceFactory;
+import tech.kayys.andalus.inference.AndalusInferenceService;
+import tech.kayys.andalus.inference.AndalusInferenceServiceFactory;
 import tech.kayys.gollek.spi.inference.StreamingInferenceChunk;
-import tech.kayys.andalus.sdk.provider.ChatMessage;
-import tech.kayys.andalus.sdk.agent.AndalusSessionPersistence;
+import tech.kayys.andalus.provider.ChatMessage;
+import tech.kayys.andalus.agent.AndalusSessionPersistence;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -155,10 +155,10 @@ public final class ShellChatSession {
         public <T> void with(Consumer<Chunk> onItem, Consumer<Throwable> onFailure, Runnable onComplete) {
             try {
                 // Skip SDK; go directly to subprocess fallback via AndalusInferenceService with null SDK
-                tech.kayys.andalus.gollek.sdk.AndalusInferenceService fallback = tech.kayys.andalus.gollek.sdk.AndalusInferenceServiceFactory.create(null, session.systemPrompt, session.modelId);
+                tech.kayys.andalus.inference.AndalusInferenceService fallback = tech.kayys.andalus.inference.AndalusInferenceServiceFactory.create(null, session.systemPrompt, session.modelId);
                 
                 // Persist the user's message immediately
-                session.addMessage(tech.kayys.andalus.sdk.provider.ChatMessage.userText(prompt));
+                session.addMessage(ChatMessage.userText(prompt));
 
                 StringBuilder assistantAccumulator = new StringBuilder();
 
@@ -182,7 +182,7 @@ public final class ShellChatSession {
                             try {
                                 String assistantText = assistantAccumulator.toString();
                                 if (assistantText != null && !assistantText.isBlank()) {
-                                    session.addMessage(tech.kayys.andalus.sdk.provider.ChatMessage.assistantText(assistantText));
+                                    session.addMessage(ChatMessage.assistantText(assistantText));
                                 }
                             } catch (Exception ignored) {}
 

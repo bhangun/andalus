@@ -3,9 +3,9 @@ package tech.kayys.andalus.cli;
 import org.junit.jupiter.api.Test;
 
 import tech.kayys.andalus.cli.run.AndalusRunRequestOptions;
-import tech.kayys.andalus.gollek.sdk.AgentRunRequest;
-import tech.kayys.andalus.gollek.sdk.Andalus;
-import tech.kayys.andalus.gollek.sdk.AndalusClient;
+import tech.kayys.andalus.agent.run.AgentRunRequest;
+import tech.kayys.andalus.client.Andalus;
+import tech.kayys.andalus.client.AndalusClient;
 
 import java.io.InputStream;
 import java.util.List;

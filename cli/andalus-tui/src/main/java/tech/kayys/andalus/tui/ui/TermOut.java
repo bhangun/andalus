@@ -1,19 +1,4 @@
 package tech.kayys.andalus.tui.ui;
-import tech.kayys.andalus.sdk.agent.AndalusAgent;
-import tech.kayys.andalus.sdk.agent.AndalusAgentListener;
-
-import tech.kayys.andalus.sdk.agent.AndalusAgentListener;
-
-import tech.kayys.andalus.tools.spi.Tool;
-
-import tech.kayys.andalus.tools.spi.ToolResult;
-
-import tech.kayys.andalus.sdk.json.Json;
-
-import tech.kayys.andalus.sdk.json.JsonValue;
-
-import tech.kayys.andalus.sdk.agent.PermissionDecision;
-
 import tech.kayys.andalus.tui.term.Ansi;
 import java.io.IOException;
 import java.io.OutputStream;

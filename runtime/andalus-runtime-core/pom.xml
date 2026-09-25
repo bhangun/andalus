@@ -170,6 +170,15 @@
       <version>${project.version}</version>
     </dependency>
 
+    <!-- Durable A2A integration (6.16): task ledger, wake coordinator,
+         completion bridge, and reconciliation SPIs wired into the Claw
+         durable WAITING lifecycle. -->
+    <dependency>
+      <groupId>tech.kayys.andalus</groupId>
+      <artifactId>andalus-a2a</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
     <dependency>
       <groupId>tech.kayys.andalus</groupId>
       <artifactId>andalus-plugin-spi</artifactId>
@@ -237,12 +246,9 @@
 
     <!-- Lombok -->
 
-    <!-- Tool Integration -->
-    <dependency>
-      <groupId>tech.kayys.andalus</groupId>
-      <artifactId>andalus-tool-core</artifactId>
-      <version>1.0.0-SNAPSHOT</version>
-    </dependency>
+    <!-- Tool Integration — provided by andalus-tool (0.0.1); the former
+         andalus-tool-core:1.0.0-SNAPSHOT reference was unresolvable and redundant:
+         all used types (Tool, ToolInvocation, ToolResult) live in andalus-tool. -->
 
     <!-- Git implementation for Skills Loader -->
     <dependency>

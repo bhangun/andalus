@@ -4,13 +4,13 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import tech.kayys.andalus.cli.AndalusGollekCli;
-import tech.kayys.andalus.gollek.sdk.AgentRunHandle;
-import tech.kayys.andalus.gollek.sdk.AgentRunState;
-import tech.kayys.andalus.gollek.sdk.AgentRunStatus;
-import tech.kayys.andalus.gollek.sdk.AgentRunStore;
-import tech.kayys.andalus.gollek.sdk.LocalAndalusGollekSdk;
-import tech.kayys.andalus.gollek.sdk.AndalusGollekSdk;
-import tech.kayys.andalus.gollek.sdk.AndalusGollekSdkConfig;
+import tech.kayys.andalus.agent.run.AgentRunHandle;
+import tech.kayys.andalus.agent.run.AgentRunState;
+import tech.kayys.andalus.agent.run.AgentRunStatus;
+import tech.kayys.andalus.agent.store.AgentRunStore;
+import tech.kayys.andalus.client.LocalAndalusGollekSdk;
+import tech.kayys.andalus.client.AndalusGollekSdk;
+import tech.kayys.andalus.client.AndalusGollekSdkConfig;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

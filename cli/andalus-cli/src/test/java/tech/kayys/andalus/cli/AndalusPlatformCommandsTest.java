@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Test;
 import picocli.CommandLine;
 import tech.kayys.andalus.cli.AndalusGollekCli;
 import tech.kayys.andalus.cli.AndalusPlatformCommands;
-import tech.kayys.andalus.gollek.sdk.LocalAndalusGollekSdk;
-import tech.kayys.andalus.gollek.sdk.AndalusGollekSdk;
-import tech.kayys.andalus.gollek.sdk.AndalusGollekSdkConfig;
-import tech.kayys.andalus.gollek.sdk.AndalusPlatformReadinessProfileRegistryConfig;
+import tech.kayys.andalus.client.LocalAndalusGollekSdk;
+import tech.kayys.andalus.client.AndalusGollekSdk;
+import tech.kayys.andalus.client.AndalusGollekSdkConfig;
+import tech.kayys.andalus.readiness.AndalusPlatformReadinessProfileRegistryConfig;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;

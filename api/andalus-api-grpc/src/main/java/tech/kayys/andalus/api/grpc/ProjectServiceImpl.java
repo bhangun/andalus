@@ -3,9 +3,9 @@ package tech.kayys.andalus.api.grpc;
 import io.smallrye.mutiny.Uni;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import tech.kayys.andalus.sdk.gollek.ProjectStore;
-import tech.kayys.andalus.sdk.gollek.model.Project;
-import tech.kayys.andalus.sdk.gollek.model.Session;
+import tech.kayys.andalus.project.ProjectStore;
+import tech.kayys.andalus.project.Project;
+import tech.kayys.andalus.project.Session;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;

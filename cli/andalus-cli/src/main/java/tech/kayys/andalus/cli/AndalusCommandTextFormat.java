@@ -1,11 +1,11 @@
 package tech.kayys.andalus.cli;
 
-import tech.kayys.andalus.gollek.sdk.WorkbenchCommand;
-import tech.kayys.andalus.gollek.sdk.WorkbenchCommandCategorySummary;
-import tech.kayys.andalus.gollek.sdk.WorkbenchCommandContract;
-import tech.kayys.andalus.gollek.sdk.WorkbenchCommandDiscovery;
-import tech.kayys.andalus.gollek.sdk.WorkbenchCommandEnvelopes;
-import tech.kayys.andalus.gollek.sdk.WorkbenchCommandQuery;
+import tech.kayys.andalus.workbench.WorkbenchCommand;
+import tech.kayys.andalus.workbench.WorkbenchCommandCategorySummary;
+import tech.kayys.andalus.workbench.WorkbenchCommandContract;
+import tech.kayys.andalus.workbench.WorkbenchCommandDiscovery;
+import tech.kayys.andalus.workbench.WorkbenchCommandEnvelopes;
+import tech.kayys.andalus.workbench.WorkbenchCommandQuery;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;

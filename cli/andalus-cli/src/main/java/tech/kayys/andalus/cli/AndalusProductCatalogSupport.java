@@ -1,7 +1,7 @@
 package tech.kayys.andalus.cli;
 
-import tech.kayys.andalus.gollek.sdk.ProductProfile;
-import tech.kayys.andalus.gollek.sdk.ProductSurfacePolicy;
+import tech.kayys.andalus.client.ProductProfile;
+import tech.kayys.andalus.client.ProductSurfacePolicy;
 
 import java.util.LinkedHashMap;
 import java.util.List;

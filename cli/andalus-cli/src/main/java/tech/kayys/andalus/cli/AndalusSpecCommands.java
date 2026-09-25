@@ -5,9 +5,9 @@ import picocli.CommandLine.Model.CommandSpec;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.ParentCommand;
 import picocli.CommandLine.Spec;
-import tech.kayys.andalus.gollek.sdk.AgentRunPreview;
-import tech.kayys.andalus.gollek.sdk.AndalusProductCatalog;
-import tech.kayys.andalus.gollek.sdk.AndalusSpecApi;
+import tech.kayys.andalus.agent.run.AgentRunPreview;
+import tech.kayys.andalus.client.AndalusProductCatalog;
+import tech.kayys.andalus.client.AndalusSpecApi;
 
 import java.util.concurrent.Callable;
 

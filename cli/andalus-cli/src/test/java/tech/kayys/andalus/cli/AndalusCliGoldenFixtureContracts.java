@@ -1,8 +1,8 @@
 package tech.kayys.andalus.cli;
 
-import tech.kayys.andalus.gollek.sdk.AndalusContractCatalog;
-import tech.kayys.andalus.gollek.sdk.AndalusContractDescriptor;
-import tech.kayys.andalus.gollek.sdk.AndalusContractQuery;
+import tech.kayys.andalus.contract.AndalusContractCatalog;
+import tech.kayys.andalus.contract.AndalusContractDescriptor;
+import tech.kayys.andalus.contract.AndalusContractQuery;
 
 import java.io.IOException;
 import java.util.HashSet;

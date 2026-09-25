@@ -1,8 +1,8 @@
 package tech.kayys.andalus.cli.contract;
 
-import tech.kayys.andalus.gollek.sdk.AndalusContractCommandCoverageEntry;
-import tech.kayys.andalus.gollek.sdk.AndalusContractCommandCoverageReport;
-import tech.kayys.andalus.gollek.sdk.AndalusContractEnvelopes;
+import tech.kayys.andalus.contract.AndalusContractCommandCoverageEntry;
+import tech.kayys.andalus.contract.AndalusContractCommandCoverageReport;
+import tech.kayys.andalus.contract.AndalusContractEnvelopes;
 
 import java.util.List;
 

@@ -1,11 +1,11 @@
 package tech.kayys.andalus.cli;
 
 import picocli.CommandLine.Option;
-import tech.kayys.andalus.gollek.sdk.AgentRunStoreBackupRetentionPolicy;
-import tech.kayys.andalus.gollek.sdk.AgentRunStoreRetentionPolicy;
-import tech.kayys.andalus.gollek.sdk.AndalusGollekSdkConfig;
-import tech.kayys.andalus.gollek.sdk.AndalusGollekSdkProvider;
-import tech.kayys.andalus.gollek.sdk.AndalusPlatformReadinessProfileRegistryConfig;
+import tech.kayys.andalus.agent.store.AgentRunStoreBackupRetentionPolicy;
+import tech.kayys.andalus.agent.store.AgentRunStoreRetentionPolicy;
+import tech.kayys.andalus.client.AndalusGollekSdkConfig;
+import tech.kayys.andalus.client.AndalusGollekSdkProvider;
+import tech.kayys.andalus.readiness.AndalusPlatformReadinessProfileRegistryConfig;
 
 import java.util.LinkedHashMap;
 import java.nio.file.Files;

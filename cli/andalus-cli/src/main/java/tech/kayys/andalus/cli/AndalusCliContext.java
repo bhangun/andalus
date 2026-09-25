@@ -1,6 +1,6 @@
 package tech.kayys.andalus.cli;
 
-import tech.kayys.andalus.gollek.sdk.AndalusClient;
+import tech.kayys.andalus.client.AndalusClient;
 
 import java.io.InputStream;
 import java.io.PrintStream;

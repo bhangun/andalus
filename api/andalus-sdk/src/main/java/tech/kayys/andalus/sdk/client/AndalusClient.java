@@ -1,7 +1,7 @@
 package tech.kayys.andalus.sdk.client;
 
-import tech.kayys.andalus.sdk.agent.AndalusAgent;
-import tech.kayys.andalus.sdk.gollek.ProjectStore;
+import tech.kayys.andalus.project.ProjectStore;
+import tech.kayys.andalus.agent.AndalusAgent;
 
 import java.nio.file.Path;
 

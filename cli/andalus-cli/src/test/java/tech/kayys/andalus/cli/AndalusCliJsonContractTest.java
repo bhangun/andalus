@@ -4,12 +4,12 @@ import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestFactory;
 
-import tech.kayys.andalus.gollek.sdk.AndalusContractCatalog;
-import tech.kayys.andalus.gollek.sdk.AndalusContractDescriptor;
-import tech.kayys.andalus.gollek.sdk.AndalusContractDiscovery;
-import tech.kayys.andalus.gollek.sdk.AndalusContractJsonSchema;
-import tech.kayys.andalus.gollek.sdk.AndalusContractQuery;
-import tech.kayys.andalus.gollek.sdk.AndalusGollekSdk;
+import tech.kayys.andalus.contract.AndalusContractCatalog;
+import tech.kayys.andalus.contract.AndalusContractDescriptor;
+import tech.kayys.andalus.contract.AndalusContractDiscovery;
+import tech.kayys.andalus.contract.AndalusContractJsonSchema;
+import tech.kayys.andalus.contract.AndalusContractQuery;
+import tech.kayys.andalus.client.AndalusGollekSdk;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

@@ -1,9 +1,9 @@
 package tech.kayys.andalus.cli;
 
-import tech.kayys.andalus.gollek.sdk.AndalusProviderCapabilityDescriptor;
-import tech.kayys.andalus.gollek.sdk.AndalusProviderCapabilityDiscovery;
-import tech.kayys.andalus.gollek.sdk.AndalusProviderCapabilityEnvelopes;
-import tech.kayys.andalus.gollek.sdk.AndalusProviderCapabilityQuery;
+import tech.kayys.andalus.capability.AndalusProviderCapabilityDescriptor;
+import tech.kayys.andalus.capability.AndalusProviderCapabilityDiscovery;
+import tech.kayys.andalus.capability.AndalusProviderCapabilityEnvelopes;
+import tech.kayys.andalus.capability.AndalusProviderCapabilityQuery;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;

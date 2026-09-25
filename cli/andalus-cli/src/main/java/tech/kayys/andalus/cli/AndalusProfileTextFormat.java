@@ -1,6 +1,6 @@
 package tech.kayys.andalus.cli;
 
-import tech.kayys.andalus.gollek.sdk.ProductProfile;
+import tech.kayys.andalus.client.ProductProfile;
 
 import java.util.List;
 

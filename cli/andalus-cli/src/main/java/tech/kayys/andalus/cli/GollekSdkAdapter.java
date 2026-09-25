@@ -1,6 +1,6 @@
 package tech.kayys.andalus.cli;
 
-import tech.kayys.andalus.gollek.sdk.AndalusGollekFacade;
+import tech.kayys.andalus.client.AndalusGollekFacade;
 
 import java.io.PrintStream;
 import java.util.List;
@@ -54,7 +54,7 @@ public final class GollekSdkAdapter {
                 if (cfgModel != null) {
                     // Try to resolve to a local gollek model id by scanning 'gollek list' output.
                     try {
-                        List<?> models = tech.kayys.andalus.gollek.sdk.AndalusGollekFacade.listModels();
+                        List<?> models = tech.kayys.andalus.client.AndalusGollekFacade.listModels();
                         String loweredCfg = cfgModel.toLowerCase();
                         boolean hasSlash = loweredCfg.contains("/");
                         String owner = null, name = null;

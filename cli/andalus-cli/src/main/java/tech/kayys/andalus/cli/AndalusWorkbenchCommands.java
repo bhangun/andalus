@@ -4,10 +4,10 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.Mixin;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.ParentCommand;
-import tech.kayys.andalus.gollek.sdk.AndalusClient;
-import tech.kayys.andalus.gollek.sdk.AndalusWorkbenchModel;
-import tech.kayys.andalus.gollek.sdk.WorkbenchCommandDiscovery;
-import tech.kayys.andalus.gollek.sdk.WorkbenchCommandQuery;
+import tech.kayys.andalus.client.AndalusClient;
+import tech.kayys.andalus.client.AndalusWorkbenchModel;
+import tech.kayys.andalus.workbench.WorkbenchCommandDiscovery;
+import tech.kayys.andalus.workbench.WorkbenchCommandQuery;
 
 import java.util.concurrent.Callable;
 

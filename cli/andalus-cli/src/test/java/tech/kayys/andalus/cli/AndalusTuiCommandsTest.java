@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import picocli.CommandLine;
 import tech.kayys.andalus.cli.AndalusGollekCli;
 import tech.kayys.andalus.cli.AndalusTuiCommands;
-import tech.kayys.andalus.gollek.sdk.AndalusGollekSdk;
+import tech.kayys.andalus.client.AndalusGollekSdk;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;

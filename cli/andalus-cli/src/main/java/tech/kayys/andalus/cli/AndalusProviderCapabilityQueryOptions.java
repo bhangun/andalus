@@ -1,8 +1,8 @@
 package tech.kayys.andalus.cli;
 
 import picocli.CommandLine.Option;
-import tech.kayys.andalus.gollek.sdk.AndalusProviderCapabilityQuery;
-import tech.kayys.andalus.gollek.sdk.AndalusProviderCapabilityState;
+import tech.kayys.andalus.capability.AndalusProviderCapabilityQuery;
+import tech.kayys.andalus.capability.AndalusProviderCapabilityState;
 
 final class AndalusProviderCapabilityQueryOptions {
 

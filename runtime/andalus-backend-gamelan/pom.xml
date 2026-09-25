@@ -52,6 +52,13 @@
             <version>${gamelan.version}</version>
         </dependency>
 
+        <!-- Andalus Harness: durable binding store + Gamelan-Claw reconciliation SPI -->
+        <dependency>
+            <groupId>tech.kayys.andalus</groupId>
+            <artifactId>andalus-harness</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <!-- Andalus Runtime Core -->
         <dependency>
             <groupId>tech.kayys.andalus</groupId>

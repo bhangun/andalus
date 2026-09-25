@@ -1,20 +1,20 @@
 package tech.kayys.andalus.cli;
 
-import tech.kayys.andalus.gollek.sdk.*;
-import tech.kayys.andalus.sdk.agent.AndalusAgent;
-import tech.kayys.andalus.sdk.agent.AndalusAgentBuilder;
-import tech.kayys.andalus.sdk.agent.AndalusSessionPersistence;
-import tech.kayys.andalus.sdk.provider.ChatMessage;
-import tech.kayys.andalus.sdk.provider.ContentBlock;
-import tech.kayys.andalus.sdk.provider.StreamEvent;
-import tech.kayys.andalus.sdk.provider.ToolSpec;
-import tech.kayys.andalus.sdk.provider.AndalusProvider;
+import tech.kayys.andalus.inference.AndalusInferenceService;
+import tech.kayys.andalus.agent.AndalusAgent;
+import tech.kayys.andalus.agent.AndalusAgentBuilder;
+import tech.kayys.andalus.agent.AndalusSessionPersistence;
+import tech.kayys.andalus.provider.ChatMessage;
+import tech.kayys.andalus.provider.ContentBlock;
+import tech.kayys.andalus.provider.StreamEvent;
+import tech.kayys.andalus.provider.ToolSpec;
+import tech.kayys.andalus.provider.AndalusProvider;
 import tech.kayys.gollek.sdk.core.ChatParams;
 import tech.kayys.gollek.spi.Message;
 import tech.kayys.gollek.spi.tool.ToolCall;
 import tech.kayys.gollek.spi.tool.ToolDefinition;
-import tech.kayys.andalus.sdk.json.Json;
-import tech.kayys.andalus.sdk.json.JsonValue;
+import tech.kayys.andalus.json.Json;
+import tech.kayys.andalus.json.JsonValue;
 
 import java.io.IOException;
 import java.nio.file.Paths;

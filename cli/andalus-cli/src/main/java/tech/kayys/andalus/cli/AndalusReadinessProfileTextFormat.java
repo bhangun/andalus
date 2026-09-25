@@ -1,17 +1,17 @@
 package tech.kayys.andalus.cli;
 
-import tech.kayys.andalus.gollek.sdk.AndalusPlatformReadinessProfileDescriptor;
-import tech.kayys.andalus.gollek.sdk.AndalusPlatformReadinessProfileExternalReaderProviderDiagnostics;
-import tech.kayys.andalus.gollek.sdk.AndalusPlatformReadinessProfileExternalReaderProviderDiscoveryReport;
-import tech.kayys.andalus.gollek.sdk.AndalusPlatformReadinessProfileRegistryConfig;
-import tech.kayys.andalus.gollek.sdk.AndalusPlatformReadinessProfileRegistryConfigDiagnostics;
-import tech.kayys.andalus.gollek.sdk.AndalusPlatformReadinessProfileRegistryConfigIssue;
-import tech.kayys.andalus.gollek.sdk.AndalusPlatformReadinessProfileRegistryPreflightReport;
-import tech.kayys.andalus.gollek.sdk.AndalusPlatformReadinessProfileRegistryResolution;
-import tech.kayys.andalus.gollek.sdk.AndalusPlatformReadinessProfileSourceStatus;
-import tech.kayys.andalus.gollek.sdk.AndalusPlatformReadinessProfileValidationIssue;
-import tech.kayys.andalus.gollek.sdk.AndalusPlatformReadinessProfileValidationPolicyDescriptor;
-import tech.kayys.andalus.gollek.sdk.AndalusPlatformReadinessProfileValidationReport;
+import tech.kayys.andalus.readiness.AndalusPlatformReadinessProfileDescriptor;
+import tech.kayys.andalus.readiness.AndalusPlatformReadinessProfileExternalReaderProviderDiagnostics;
+import tech.kayys.andalus.readiness.AndalusPlatformReadinessProfileExternalReaderProviderDiscoveryReport;
+import tech.kayys.andalus.readiness.AndalusPlatformReadinessProfileRegistryConfig;
+import tech.kayys.andalus.readiness.AndalusPlatformReadinessProfileRegistryConfigDiagnostics;
+import tech.kayys.andalus.readiness.AndalusPlatformReadinessProfileRegistryConfigIssue;
+import tech.kayys.andalus.readiness.AndalusPlatformReadinessProfileRegistryPreflightReport;
+import tech.kayys.andalus.readiness.AndalusPlatformReadinessProfileRegistryResolution;
+import tech.kayys.andalus.readiness.AndalusPlatformReadinessProfileSourceStatus;
+import tech.kayys.andalus.readiness.AndalusPlatformReadinessProfileValidationIssue;
+import tech.kayys.andalus.readiness.AndalusPlatformReadinessProfileValidationPolicyDescriptor;
+import tech.kayys.andalus.readiness.AndalusPlatformReadinessProfileValidationReport;
 
 import java.util.List;
 import java.util.Map;

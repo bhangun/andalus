@@ -1,10 +1,10 @@
 package tech.kayys.andalus.cli;
 
-import tech.kayys.andalus.gollek.sdk.ComponentStatus;
-import tech.kayys.andalus.gollek.sdk.ProductSurface;
-import tech.kayys.andalus.gollek.sdk.AndalusPlatformStatus;
-import tech.kayys.andalus.gollek.sdk.AndalusWorkbenchModel;
-import tech.kayys.andalus.gollek.sdk.WorkspaceSnapshot;
+import tech.kayys.andalus.client.ComponentStatus;
+import tech.kayys.andalus.client.ProductSurface;
+import tech.kayys.andalus.client.AndalusPlatformStatus;
+import tech.kayys.andalus.client.AndalusWorkbenchModel;
+import tech.kayys.andalus.client.WorkspaceSnapshot;
 
 final class PlainWorkbenchRenderer implements AndalusWorkbenchRenderer<String> {
 

@@ -3,11 +3,11 @@ package tech.kayys.andalus.cli;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.ParentCommand;
-import tech.kayys.andalus.gollek.sdk.HarnessPlan;
-import tech.kayys.andalus.gollek.sdk.HarnessPlanRequest;
-import tech.kayys.andalus.gollek.sdk.AndalusContextApi;
-import tech.kayys.andalus.gollek.sdk.WorkspaceInspectionRequest;
-import tech.kayys.andalus.gollek.sdk.WorkspaceSnapshot;
+import tech.kayys.andalus.harness.HarnessPlan;
+import tech.kayys.andalus.harness.HarnessPlanRequest;
+import tech.kayys.andalus.context.AndalusContextApi;
+import tech.kayys.andalus.client.WorkspaceInspectionRequest;
+import tech.kayys.andalus.client.WorkspaceSnapshot;
 
 import java.util.concurrent.Callable;
 

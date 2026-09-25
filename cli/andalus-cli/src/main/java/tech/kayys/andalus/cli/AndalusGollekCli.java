@@ -4,9 +4,9 @@ import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Mixin;
 import tech.kayys.andalus.cli.contract.AndalusContractCommands;
-import tech.kayys.andalus.gollek.sdk.Andalus;
-import tech.kayys.andalus.gollek.sdk.AndalusClient;
-import tech.kayys.andalus.gollek.sdk.AndalusGollekSdk;
+import tech.kayys.andalus.client.Andalus;
+import tech.kayys.andalus.client.AndalusClient;
+import tech.kayys.andalus.client.AndalusGollekSdk;
 import tech.kayys.andalus.cli.bootstrap.GollekBootstrapService;
 
 import java.io.InputStream;
@@ -241,8 +241,8 @@ import java.lang.reflect.Method;
                                                     Method regMethod = resolvedSdk.getClass().getMethod("providerCapabilityRegistry");
                                                     Object registry = regMethod.invoke(resolvedSdk);
                                                     if (registry != null) {
-                                                        Class<?> descClass = Class.forName("tech.kayys.andalus.gollek.sdk.AndalusProviderCapabilityDescriptor");
-                                                        Class<?> stateClass = Class.forName("tech.kayys.andalus.gollek.sdk.AndalusProviderCapabilityState");
+                                                        Class<?> descClass = Class.forName("tech.kayys.andalus.capability.AndalusProviderCapabilityDescriptor");
+                                                        Class<?> stateClass = Class.forName("tech.kayys.andalus.capability.AndalusProviderCapabilityState");
                                                         java.lang.reflect.Constructor<?> ctor = descClass.getConstructor(
                                                                 String.class, String.class, String.class, String.class,
                                                                 String.class, String.class, String.class, stateClass,

@@ -1,9 +1,8 @@
 package tech.kayys.andalus.tui.config;
 import tech.kayys.andalus.tools.spi.Tool;
-import tech.kayys.andalus.sdk.json.Json;
-import tech.kayys.andalus.sdk.json.JsonValue;
-
-import tech.kayys.andalus.sdk.json.*;
+import tech.kayys.andalus.json.Json;
+import tech.kayys.andalus.json.JsonValue;
+import tech.kayys.andalus.json.*;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;

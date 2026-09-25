@@ -1,13 +1,13 @@
 package tech.kayys.andalus.cli;
 
-import tech.kayys.andalus.gollek.sdk.AndalusStandardAlignmentPolicyAssessment;
-import tech.kayys.andalus.gollek.sdk.AndalusStandardAlignmentPortfolio;
-import tech.kayys.andalus.gollek.sdk.AndalusStandardAlignmentProviderDiagnostics;
-import tech.kayys.andalus.gollek.sdk.AndalusStandardAlignmentProviderIssue;
-import tech.kayys.andalus.gollek.sdk.AndalusStandardAlignmentProviderSummary;
-import tech.kayys.andalus.gollek.sdk.AndalusStandardAlignmentSummary;
-import tech.kayys.andalus.gollek.sdk.AndalusStandardRegistryDriftIssue;
-import tech.kayys.andalus.gollek.sdk.AndalusStandardRegistryDriftReport;
+import tech.kayys.andalus.alignment.AndalusStandardAlignmentPolicyAssessment;
+import tech.kayys.andalus.alignment.AndalusStandardAlignmentPortfolio;
+import tech.kayys.andalus.alignment.AndalusStandardAlignmentProviderDiagnostics;
+import tech.kayys.andalus.alignment.AndalusStandardAlignmentProviderIssue;
+import tech.kayys.andalus.alignment.AndalusStandardAlignmentProviderSummary;
+import tech.kayys.andalus.alignment.AndalusStandardAlignmentSummary;
+import tech.kayys.andalus.registry.AndalusStandardRegistryDriftIssue;
+import tech.kayys.andalus.registry.AndalusStandardRegistryDriftReport;
 
 /**
  * Reusable section renderers for standard-alignment health terminal output.

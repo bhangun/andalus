@@ -1,9 +1,9 @@
 package tech.kayys.andalus.cli.contract;
 
-import tech.kayys.andalus.gollek.sdk.AndalusContractDescriptor;
-import tech.kayys.andalus.gollek.sdk.AndalusContractDiscovery;
-import tech.kayys.andalus.gollek.sdk.AndalusContractEnvelopes;
-import tech.kayys.andalus.gollek.sdk.AndalusContractQuery;
+import tech.kayys.andalus.contract.AndalusContractDescriptor;
+import tech.kayys.andalus.contract.AndalusContractDiscovery;
+import tech.kayys.andalus.contract.AndalusContractEnvelopes;
+import tech.kayys.andalus.contract.AndalusContractQuery;
 
 /**
  * Text renderer for contract catalog and index responses shown by the Andalus CLI.

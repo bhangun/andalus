@@ -3,8 +3,8 @@ package tech.kayys.andalus.cli;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
-import tech.kayys.andalus.sdk.provider.ChatMessage;
-import tech.kayys.andalus.sdk.agent.AndalusSessionPersistence;
+import tech.kayys.andalus.provider.ChatMessage;
+import tech.kayys.andalus.agent.AndalusSessionPersistence;
 
 /**
  * Minimal in-process chat session used when Gollek SDK is not available.

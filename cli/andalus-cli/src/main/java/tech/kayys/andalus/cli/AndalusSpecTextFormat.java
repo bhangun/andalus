@@ -1,6 +1,6 @@
 package tech.kayys.andalus.cli;
 
-import tech.kayys.andalus.gollek.sdk.AgentRunPreview;
+import tech.kayys.andalus.agent.run.AgentRunPreview;
 
 /**
  * Plain-text renderer for run specification validation results.

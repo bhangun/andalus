@@ -1,7 +1,7 @@
 package tech.kayys.andalus.cli;
 
-import tech.kayys.andalus.gollek.sdk.HarnessCheck;
-import tech.kayys.andalus.gollek.sdk.HarnessPlan;
+import tech.kayys.andalus.harness.HarnessCheck;
+import tech.kayys.andalus.harness.HarnessPlan;
 
 final class AndalusHarnessTextFormat {
 

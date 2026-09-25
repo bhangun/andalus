@@ -18,13 +18,13 @@ import org.slf4j.LoggerFactory;
  */
 public class AndalusCodeService extends CodeServiceGrpc.CodeServiceImplBase {
     private static final Logger log = LoggerFactory.getLogger(AndalusCodeService.class);
-    private final tech.kayys.andalus.sdk.gollek.ProjectStore store;
+    private final tech.kayys.andalus.project.ProjectStore store;
 
     public AndalusCodeService() {
         super();
-        tech.kayys.andalus.sdk.gollek.ProjectStore tmp = null;
+        tech.kayys.andalus.project.ProjectStore tmp = null;
         try {
-            tmp = new tech.kayys.andalus.sdk.gollek.ProjectStore(null);
+            tmp = new tech.kayys.andalus.project.ProjectStore(null);
         } catch (Exception e) {
             log.error("Failed to initialize ProjectStore: {}", e.getMessage());
         }
@@ -45,7 +45,7 @@ public class AndalusCodeService extends CodeServiceGrpc.CodeServiceImplBase {
                     var list = store.listProjects();
                     if (!list.isEmpty()) projectId = list.get(0).id();
                     else {
-                        tech.kayys.andalus.sdk.gollek.model.Project p = store.createProject("default", "default", System.getProperty("user.dir"));
+                        tech.kayys.andalus.project.Project p = store.createProject("default", "default", System.getProperty("user.dir"));
                         projectId = p.id();
                     }
                 }
@@ -53,7 +53,7 @@ public class AndalusCodeService extends CodeServiceGrpc.CodeServiceImplBase {
 
             String sessionId = req.getSessionId();
             if (sessionId == null || sessionId.isBlank()) {
-                tech.kayys.andalus.sdk.gollek.model.Session s = store.createSession(projectId, "session");
+                tech.kayys.andalus.project.Session s = store.createSession(projectId, "session");
                 sessionId = s.id();
             }
 

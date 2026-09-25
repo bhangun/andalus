@@ -1,6 +1,6 @@
 package tech.kayys.andalus.sdk.client;
 
-import tech.kayys.andalus.sdk.provider.Provider;
+import tech.kayys.andalus.provider.Provider;
 
 /**
  * API for managing inference providers.

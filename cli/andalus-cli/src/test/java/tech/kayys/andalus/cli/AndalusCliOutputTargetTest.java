@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import tech.kayys.andalus.cli.AndalusCliOutputTarget;
-import tech.kayys.andalus.gollek.sdk.AndalusRunSpecService;
+import tech.kayys.andalus.agent.run.AndalusRunSpecService;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;

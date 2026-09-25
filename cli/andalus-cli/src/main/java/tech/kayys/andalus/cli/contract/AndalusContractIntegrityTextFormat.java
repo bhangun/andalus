@@ -1,8 +1,8 @@
 package tech.kayys.andalus.cli.contract;
 
-import tech.kayys.andalus.gollek.sdk.AndalusContractIntegrityIssue;
-import tech.kayys.andalus.gollek.sdk.AndalusContractIntegrityReport;
-import tech.kayys.andalus.gollek.sdk.AndalusContractEnvelopes;
+import tech.kayys.andalus.contract.AndalusContractIntegrityIssue;
+import tech.kayys.andalus.contract.AndalusContractIntegrityReport;
+import tech.kayys.andalus.contract.AndalusContractEnvelopes;
 
 /**
  * Plain-text renderer for contract integrity diagnostics.

@@ -1,6 +1,6 @@
 package tech.kayys.andalus.cli;
 
-import tech.kayys.andalus.gollek.sdk.AndalusReadinessReport;
+import tech.kayys.andalus.readiness.AndalusReadinessReport;
 
 import java.util.List;
 import java.util.Map;

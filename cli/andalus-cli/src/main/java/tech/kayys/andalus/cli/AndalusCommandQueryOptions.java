@@ -1,7 +1,7 @@
 package tech.kayys.andalus.cli;
 
 import picocli.CommandLine.Option;
-import tech.kayys.andalus.gollek.sdk.WorkbenchCommandQuery;
+import tech.kayys.andalus.workbench.WorkbenchCommandQuery;
 
 final class AndalusCommandQueryOptions {
 

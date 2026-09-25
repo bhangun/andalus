@@ -1,12 +1,12 @@
 package tech.kayys.andalus.cli;
 
-import tech.kayys.andalus.gollek.sdk.AndalusStandardAlignmentHealthReport;
-import tech.kayys.andalus.gollek.sdk.AndalusStandardAlignmentPolicyAssessment;
-import tech.kayys.andalus.gollek.sdk.AndalusStandardAlignmentPortfolio;
-import tech.kayys.andalus.gollek.sdk.AndalusStandardAlignmentProviderDiagnostics;
-import tech.kayys.andalus.gollek.sdk.AndalusStandardAlignmentProviderPolicyAssessment;
-import tech.kayys.andalus.gollek.sdk.AndalusStandardAlignmentHealthEnvelopes;
-import tech.kayys.andalus.gollek.sdk.AndalusStandardRegistryDriftReport;
+import tech.kayys.andalus.alignment.AndalusStandardAlignmentHealthReport;
+import tech.kayys.andalus.alignment.AndalusStandardAlignmentPolicyAssessment;
+import tech.kayys.andalus.alignment.AndalusStandardAlignmentPortfolio;
+import tech.kayys.andalus.alignment.AndalusStandardAlignmentProviderDiagnostics;
+import tech.kayys.andalus.alignment.AndalusStandardAlignmentProviderPolicyAssessment;
+import tech.kayys.andalus.alignment.AndalusStandardAlignmentHealthEnvelopes;
+import tech.kayys.andalus.registry.AndalusStandardRegistryDriftReport;
 
 /**
  * Plain-text renderer for standards alignment health diagnostics.

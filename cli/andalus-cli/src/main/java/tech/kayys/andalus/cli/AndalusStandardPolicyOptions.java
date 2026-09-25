@@ -1,7 +1,7 @@
 package tech.kayys.andalus.cli;
 
 import picocli.CommandLine.Option;
-import tech.kayys.andalus.gollek.sdk.AndalusStandardAlignmentPolicyConfig;
+import tech.kayys.andalus.alignment.AndalusStandardAlignmentPolicyConfig;
 
 import java.util.List;
 

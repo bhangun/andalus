@@ -6,11 +6,12 @@ import io.grpc.stub.StreamObserver;
 import tech.kayys.andalus.api.grpc.CodeChunk;
 import tech.kayys.andalus.api.grpc.CodeRequest;
 import tech.kayys.andalus.api.grpc.CodeServiceGrpc;
-import tech.kayys.andalus.sdk.provider.ChatMessage;
-import tech.kayys.andalus.sdk.provider.StreamEvent;
-import tech.kayys.andalus.sdk.provider.Provider;
-import tech.kayys.andalus.sdk.provider.ToolSpec;
+import tech.kayys.andalus.provider.ChatMessage;
+import tech.kayys.andalus.provider.StreamEvent;
+import tech.kayys.andalus.provider.Provider;
+import tech.kayys.andalus.provider.ToolSpec;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.concurrent.CountDownLatch;
@@ -43,7 +44,7 @@ public class AgentEngineProvider implements Provider {
     }
 
     @Override
-    public void streamChat(List<ChatMessage> history, String systemPrompt, List<ToolSpec> tools, double temperature, int maxTokens, Consumer<StreamEvent> onEvent) {
+    public void streamChat(List<ChatMessage> history, String systemPrompt, List<ToolSpec> tools, double temperature, int maxTokens, Consumer<StreamEvent> onEvent) throws IOException, InterruptedException {
         onEvent.accept(new StreamEvent.TextDelta("[Delegating to Andalus Agent Engine with strategy: " + strategy + "]\n"));
         onEvent.accept(new StreamEvent.ThinkingDelta("Initializing gRPC execution strategy..."));
 

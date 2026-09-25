@@ -3,7 +3,7 @@ package tech.kayys.andalus.api.grpc;
 import io.grpc.stub.StreamObserver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import tech.kayys.andalus.sdk.gollek.ProjectStore;
+import tech.kayys.andalus.project.ProjectStore;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

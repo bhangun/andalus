@@ -60,7 +60,7 @@ public class AndalusGollekProxyCommand implements Callable<Integer> {
                 } else {
                     try {
                         // Prefer SDK
-                        java.util.List<?> models = tech.kayys.andalus.gollek.sdk.AndalusGollekFacade.listModels();
+                        java.util.List<?> models = tech.kayys.andalus.client.AndalusGollekFacade.listModels();
                         if (models == null || models.isEmpty()) {
                             out.println("No models found.");
                             return 0;
@@ -103,7 +103,7 @@ public class AndalusGollekProxyCommand implements Callable<Integer> {
                 }
                 // Prefer SDK-backed pull when available
                 try {
-                    int rc = tech.kayys.andalus.gollek.sdk.AndalusGollekFacade.pullModel(out, modelId);
+                    int rc = tech.kayys.andalus.client.AndalusGollekFacade.pullModel(out, modelId);
                     return rc;
                 } catch (Throwable t) {
                     return runProcessAndPipe(out, "gollek", "pull", modelId);

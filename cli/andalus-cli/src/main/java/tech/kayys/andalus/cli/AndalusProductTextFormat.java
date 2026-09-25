@@ -1,8 +1,8 @@
 package tech.kayys.andalus.cli;
 
-import tech.kayys.andalus.gollek.sdk.ProductProfile;
-import tech.kayys.andalus.gollek.sdk.ProductSurface;
-import tech.kayys.andalus.gollek.sdk.ProductSurfacePolicy;
+import tech.kayys.andalus.client.ProductProfile;
+import tech.kayys.andalus.client.ProductSurface;
+import tech.kayys.andalus.client.ProductSurfacePolicy;
 
 import java.util.List;
 import java.util.Map;

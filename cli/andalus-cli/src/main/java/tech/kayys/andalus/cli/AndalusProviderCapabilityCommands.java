@@ -5,11 +5,11 @@ import picocli.CommandLine.Mixin;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.ParentCommand;
 import picocli.CommandLine.Parameters;
-import tech.kayys.andalus.gollek.sdk.AndalusClient;
-import tech.kayys.andalus.gollek.sdk.AndalusProviderApi;
-import tech.kayys.andalus.gollek.sdk.AndalusProviderCapabilityDescriptor;
-import tech.kayys.andalus.gollek.sdk.AndalusProviderCapabilityDiscovery;
-import tech.kayys.andalus.gollek.sdk.AndalusProviderCapabilityQuery;
+import tech.kayys.andalus.client.AndalusClient;
+import tech.kayys.andalus.client.AndalusProviderApi;
+import tech.kayys.andalus.capability.AndalusProviderCapabilityDescriptor;
+import tech.kayys.andalus.capability.AndalusProviderCapabilityDiscovery;
+import tech.kayys.andalus.capability.AndalusProviderCapabilityQuery;
 
 import java.util.concurrent.Callable;
 

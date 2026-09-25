@@ -1,7 +1,7 @@
 package tech.kayys.andalus.cli;
 
-import tech.kayys.andalus.gollek.sdk.ComponentStatus;
-import tech.kayys.andalus.gollek.sdk.AndalusPlatformStatus;
+import tech.kayys.andalus.client.ComponentStatus;
+import tech.kayys.andalus.client.AndalusPlatformStatus;
 
 final class AndalusStatusTextFormat {
 

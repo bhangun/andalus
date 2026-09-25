@@ -1,8 +1,8 @@
 package tech.kayys.andalus.cli.skill;
 
 import picocli.CommandLine.Option;
-import tech.kayys.andalus.gollek.sdk.AgentSkillQuery;
-import tech.kayys.andalus.gollek.sdk.AgentSkillState;
+import tech.kayys.andalus.agent.skill.AgentSkillQuery;
+import tech.kayys.andalus.agent.skill.AgentSkillState;
 
 final public class AndalusSkillQueryOptions {
 

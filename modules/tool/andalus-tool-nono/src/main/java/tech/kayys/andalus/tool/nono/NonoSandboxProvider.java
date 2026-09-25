@@ -34,7 +34,6 @@ public class NonoSandboxProvider implements SandboxProvider {
         return "nono";
     }
 
-    @Override
     public tech.kayys.andalus.identity.ResourceId id() {
         return tech.kayys.andalus.identity.ResourceId.from(
             tech.kayys.andalus.extension.Id.fromString(java.util.UUID.nameUUIDFromBytes("nono-sandbox-provider".getBytes()).toString()),
@@ -42,12 +41,10 @@ public class NonoSandboxProvider implements SandboxProvider {
         );
     }
 
-    @Override
     public tech.kayys.andalus.resource.ResourceType type() {
         return new tech.kayys.andalus.resource.ResourceType.Custom("sandbox-provider");
     }
 
-    @Override
     public tech.kayys.andalus.extension.Metadata metadata() {
         return tech.kayys.andalus.extension.Metadata.builder()
             .name("NonoSandboxProvider")

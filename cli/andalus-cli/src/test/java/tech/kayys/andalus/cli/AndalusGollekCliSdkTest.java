@@ -1,14 +1,14 @@
 package tech.kayys.andalus.cli;
 
 import org.junit.jupiter.api.Test;
-import tech.kayys.andalus.gollek.sdk.AgentRunRequest;
-import tech.kayys.andalus.gollek.sdk.AgentRunResult;
-import tech.kayys.andalus.gollek.sdk.AgentSkillQuery;
-import tech.kayys.andalus.gollek.sdk.ProductSurface;
-import tech.kayys.andalus.gollek.sdk.RegisteredSkill;
-import tech.kayys.andalus.gollek.sdk.AndalusGollekSdk;
-import tech.kayys.andalus.gollek.sdk.AndalusPlatformStatus;
-import tech.kayys.andalus.gollek.sdk.AndalusWorkbenchModel;
+import tech.kayys.andalus.agent.run.AgentRunRequest;
+import tech.kayys.andalus.agent.run.AgentRunResult;
+import tech.kayys.andalus.agent.skill.AgentSkillQuery;
+import tech.kayys.andalus.client.ProductSurface;
+import tech.kayys.andalus.skill.RegisteredSkill;
+import tech.kayys.andalus.client.AndalusGollekSdk;
+import tech.kayys.andalus.client.AndalusPlatformStatus;
+import tech.kayys.andalus.client.AndalusWorkbenchModel;
 
 import java.util.List;
 

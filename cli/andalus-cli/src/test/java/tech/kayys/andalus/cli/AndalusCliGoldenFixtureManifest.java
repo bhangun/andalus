@@ -1,6 +1,6 @@
 package tech.kayys.andalus.cli;
 
-import tech.kayys.andalus.gollek.sdk.AndalusContractDescriptor;
+import tech.kayys.andalus.contract.AndalusContractDescriptor;
 
 import java.util.List;
 import java.util.Locale;

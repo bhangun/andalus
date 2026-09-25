@@ -1,18 +1,12 @@
 package tech.kayys.andalus.tui.ui;
-import tech.kayys.andalus.sdk.agent.AndalusAgent;
-import tech.kayys.andalus.sdk.agent.AndalusAgentListener;
-
-import tech.kayys.andalus.sdk.agent.AndalusAgentListener;
-
+import tech.kayys.andalus.agent.AndalusAgent;
+import tech.kayys.andalus.agent.AndalusAgentListener;
+import tech.kayys.andalus.agent.PermissionDecision;
 import tech.kayys.andalus.tools.spi.ToolResult;
-
-import tech.kayys.andalus.sdk.agent.PermissionDecision;
-
-import tech.kayys.andalus.sdk.agent.*;
 import tech.kayys.andalus.tools.spi.Tool;
 import tech.kayys.andalus.tui.config.Config;
-import tech.kayys.andalus.sdk.json.Json;
-import tech.kayys.andalus.sdk.json.JsonValue;
+import tech.kayys.andalus.json.Json;
+import tech.kayys.andalus.json.JsonValue;
 import tech.kayys.andalus.tui.render.MarkdownRenderer;
 import tech.kayys.andalus.tui.render.TextWrap;
 import tech.kayys.andalus.tui.render.Theme;
@@ -417,7 +411,7 @@ public final class PanelUi {
         return s + " ".repeat(width - visLen);
     }
 
-    private String summarizeArgs(tech.kayys.andalus.sdk.json.JsonValue input) {
+    private String summarizeArgs(Object input) {
         String s = input != null ? input.toString() : "{}";
         if (s.length() > 140) s = s.substring(0, 140) + "...";
         return s;
@@ -446,12 +440,12 @@ public final class PanelUi {
             render();
         }
 
-        @Override public void onToolCallReady(String id, String name, tech.kayys.andalus.sdk.json.JsonValue toolInput) {
+        @Override public void onToolCallReady(String id, String name, java.util.Map<String, Object> toolInput) {
             entries.add(new Entry(Kind.TOOL_CALL, "  " + summarizeArgs(toolInput)));
             render();
         }
 
-        @Override public void onToolPermissionNeeded(String id, String name, tech.kayys.andalus.sdk.json.JsonValue toolInput, Consumer<PermissionDecision> responder) {
+        @Override public void onToolPermissionNeeded(String id, String name, java.util.Map<String, Object> toolInput, Consumer<PermissionDecision> responder) {
             pendingPermissionResponder = responder;
             pendingToolName = name;
             entries.add(new Entry(Kind.PERMISSION, "  Allow '" + name + "' to run?  [y]es [a]lways [n]o"));

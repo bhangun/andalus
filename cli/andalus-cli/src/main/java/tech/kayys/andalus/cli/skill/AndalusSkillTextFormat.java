@@ -1,11 +1,11 @@
 package tech.kayys.andalus.cli.skill;
 
 import tech.kayys.andalus.cli.CliText;
-import tech.kayys.andalus.gollek.sdk.AgentSkillDescriptor;
-import tech.kayys.andalus.gollek.sdk.AgentSkillDiscovery;
-import tech.kayys.andalus.gollek.sdk.AgentSkillEnvelopes;
-import tech.kayys.andalus.gollek.sdk.AgentSkillQuery;
-import tech.kayys.andalus.gollek.sdk.RegisteredSkill;
+import tech.kayys.andalus.agent.skill.AgentSkillDescriptor;
+import tech.kayys.andalus.agent.skill.AgentSkillDiscovery;
+import tech.kayys.andalus.agent.skill.AgentSkillEnvelopes;
+import tech.kayys.andalus.agent.skill.AgentSkillQuery;
+import tech.kayys.andalus.skill.RegisteredSkill;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;

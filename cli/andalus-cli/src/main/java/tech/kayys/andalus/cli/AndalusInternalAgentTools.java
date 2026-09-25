@@ -3,7 +3,7 @@ package tech.kayys.andalus.cli;
 import tech.kayys.andalus.tools.spi.Tool;
 import tech.kayys.andalus.tools.spi.ToolContext;
 import tech.kayys.andalus.tools.spi.ToolResult;
-import tech.kayys.andalus.sdk.gollek.ProjectStore;
+import tech.kayys.andalus.project.ProjectStore;
 
 import java.nio.file.Path;
 import java.util.List;
@@ -37,7 +37,7 @@ public final class AndalusInternalAgentTools {
         public Supplier<String> statusSupplier;  // captures /status output
         public Supplier<String> infoSupplier;    // captures /info output
         /** Live agent reference — used to swap history on project/session switch. */
-        public volatile tech.kayys.andalus.sdk.agent.AndalusAgent agent;
+        public volatile tech.kayys.andalus.agent.AndalusAgent agent;
     }
 
     public static List<Tool> getTools(AgentContext ctx) {
@@ -137,7 +137,7 @@ public final class AndalusInternalAgentTools {
                     return ToolResult.error("No transcript found for session: " + sid);
                 // 3. Swap agent history
                 if (ctx.agent != null) {
-                    List<tech.kayys.andalus.sdk.provider.ChatMessage> messages = deserializeTranscript(transcript);
+                    List<tech.kayys.andalus.provider.ChatMessage> messages = deserializeTranscript(transcript);
                     ctx.agent.replaceHistory(messages);
                 }
                 ctx.currentSessionId = sid;
@@ -311,7 +311,7 @@ public final class AndalusInternalAgentTools {
                             String targetSid = sessions.get(sessions.size() - 1);
                             java.util.List<?> transcript = ctx.projectStore.loadTranscript(projectId, targetSid);
                             if (ctx.agent != null) {
-                                List<tech.kayys.andalus.sdk.provider.ChatMessage> messages = deserializeTranscript(transcript);
+                                List<tech.kayys.andalus.provider.ChatMessage> messages = deserializeTranscript(transcript);
                                 ctx.agent.replaceHistory(messages);
                             }
                             ctx.currentSessionId = targetSid;
@@ -397,22 +397,22 @@ public final class AndalusInternalAgentTools {
     }
 
     /** Helper to parse a generic JSON map list from ProjectStore into ChatMessage objects. */
-    private static List<tech.kayys.andalus.sdk.provider.ChatMessage> deserializeTranscript(List<?> raw) {
-        List<tech.kayys.andalus.sdk.provider.ChatMessage> result = new java.util.ArrayList<>();
+    private static List<tech.kayys.andalus.provider.ChatMessage> deserializeTranscript(List<?> raw) {
+        List<tech.kayys.andalus.provider.ChatMessage> result = new java.util.ArrayList<>();
         if (raw == null) return result;
         for (Object item : raw) {
             if (item instanceof Map<?,?> m) {
                 String roleStr = m.get("role") != null ? m.get("role").toString().toUpperCase() : "ASSISTANT";
-                tech.kayys.andalus.sdk.provider.ChatMessage.Role role = 
-                    tech.kayys.andalus.sdk.provider.ChatMessage.Role.USER.name().equals(roleStr) ? 
-                    tech.kayys.andalus.sdk.provider.ChatMessage.Role.USER : 
-                    tech.kayys.andalus.sdk.provider.ChatMessage.Role.ASSISTANT;
+                tech.kayys.andalus.provider.ChatMessage.Role role = 
+                    tech.kayys.andalus.provider.ChatMessage.Role.USER.name().equals(roleStr) ? 
+                    tech.kayys.andalus.provider.ChatMessage.Role.USER : 
+                    tech.kayys.andalus.provider.ChatMessage.Role.ASSISTANT;
                 
                 String text = m.get("text") != null ? m.get("text").toString() : "";
                 // Currently only deserializing basic text back; restoring tool-calls 
                 // in the history is complex and less critical for simple resumption.
-                result.add(new tech.kayys.andalus.sdk.provider.ChatMessage(
-                    role, List.of(new tech.kayys.andalus.sdk.provider.ContentBlock.Text(text))
+                result.add(new tech.kayys.andalus.provider.ChatMessage(
+                    role, List.of(new tech.kayys.andalus.provider.ContentBlock.Text(text))
                 ));
             }
         }

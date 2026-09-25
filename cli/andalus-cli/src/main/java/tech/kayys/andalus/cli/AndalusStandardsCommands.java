@@ -4,10 +4,10 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.Mixin;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.ParentCommand;
-import tech.kayys.andalus.gollek.sdk.AndalusClient;
-import tech.kayys.andalus.gollek.sdk.AndalusStandardCatalog;
-import tech.kayys.andalus.gollek.sdk.AndalusStandardAlignmentHealthReport;
-import tech.kayys.andalus.gollek.sdk.AndalusStandardsApi;
+import tech.kayys.andalus.client.AndalusClient;
+import tech.kayys.andalus.catalog.AndalusStandardCatalog;
+import tech.kayys.andalus.alignment.AndalusStandardAlignmentHealthReport;
+import tech.kayys.andalus.client.AndalusStandardsApi;
 
 import java.util.concurrent.Callable;
 

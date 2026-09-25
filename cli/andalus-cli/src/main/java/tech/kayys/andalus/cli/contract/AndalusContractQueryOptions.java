@@ -1,7 +1,7 @@
 package tech.kayys.andalus.cli.contract;
 
 import picocli.CommandLine.Option;
-import tech.kayys.andalus.gollek.sdk.AndalusContractQuery;
+import tech.kayys.andalus.contract.AndalusContractQuery;
 
 final public class AndalusContractQueryOptions {
 

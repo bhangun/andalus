@@ -1,7 +1,7 @@
 package tech.kayys.andalus.tui.provider;
 
 import tech.kayys.andalus.tui.config.Config;
-import tech.kayys.andalus.sdk.provider.*;
+import tech.kayys.andalus.provider.*;
 
 /** Builds the right {@link Provider} implementation for a profile's configured provider type. */
 public final class ProviderFactory {

@@ -4,8 +4,6 @@ import io.grpc.stub.StreamObserver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import tech.kayys.andalus.project.ProjectStore;
-import tech.kayys.andalus.project.Project;
-import tech.kayys.andalus.project.Session;
 
 // NOTE: This is a lightweight skeleton. The generated classes from the proto
 // (AndalusApiProto, ProjectServiceGrpc, etc.) are expected to exist after
@@ -33,7 +31,7 @@ public class AndalusProjectService extends ProjectServiceGrpc.ProjectServiceImpl
         try {
             String dir = req.getDirectory();
             java.nio.file.Path path = (dir == null || dir.isBlank()) ? java.nio.file.Paths.get(System.getProperty("user.dir")) : java.nio.file.Path.of(dir);
-            Project p = store.createProject(req.getName(), req.getName(), path.toString());
+            tech.kayys.andalus.project.Project p = store.createProject(req.getName(), req.getName(), path.toString());
             Project proto = Project.newBuilder()
                     .setId(p.id())
                     .setName(p.name())
@@ -53,7 +51,7 @@ public class AndalusProjectService extends ProjectServiceGrpc.ProjectServiceImpl
         log.info("gRPC ListProjects");
         try {
             ProjectListResponse.Builder b = ProjectListResponse.newBuilder();
-            for (Project p : store.listProjects()) {
+            for (tech.kayys.andalus.project.Project p : store.listProjects()) {
                 b.addProjects(Project.newBuilder()
                         .setId(p.id())
                         .setName(p.name())
@@ -73,7 +71,7 @@ public class AndalusProjectService extends ProjectServiceGrpc.ProjectServiceImpl
     public void createSession(CreateSessionRequest req, StreamObserver<SessionResponse> resp) {
         log.info("gRPC CreateSession project={} name={}", req.getProjectId(), req.getName());
         try {
-            Session s = store.createSession(req.getProjectId(), req.getName());
+            tech.kayys.andalus.project.Session s = store.createSession(req.getProjectId(), req.getName());
             Session proto = Session.newBuilder()
                     .setId(s.id())
                     .setName(s.name())
@@ -167,7 +165,7 @@ public class AndalusProjectService extends ProjectServiceGrpc.ProjectServiceImpl
         try {
             java.nio.file.Path tmp = java.nio.file.Files.createTempFile("andalus-import-", ".json");
             java.nio.file.Files.write(tmp, req.getArchive().toByteArray());
-            Project p = store.importProject(tmp);
+            tech.kayys.andalus.project.Project p = store.importProject(tmp);
             resp.onNext(ProjectResponse.newBuilder().setProject(Project.newBuilder().setId(p.id()).setName(p.name()).setDirectory(p.directory() == null ? "" : p.directory()).build()).build());
             resp.onCompleted();
             try { java.nio.file.Files.deleteIfExists(tmp); } catch (Exception ignored) {}

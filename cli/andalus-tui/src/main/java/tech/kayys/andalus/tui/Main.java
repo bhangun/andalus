@@ -1,8 +1,8 @@
 package tech.kayys.andalus.tui;
 
-import tech.kayys.andalus.sdk.agent.AndalusAgent;
+import tech.kayys.andalus.agent.AndalusAgent;
 import tech.kayys.andalus.tui.config.Config;
-import tech.kayys.andalus.sdk.provider.Provider;
+import tech.kayys.andalus.provider.Provider;
 import tech.kayys.andalus.tui.provider.GollekModelManager;
 import tech.kayys.andalus.tui.provider.GollekProviderManager;
 import tech.kayys.andalus.tui.provider.ProviderFactory;

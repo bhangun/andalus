@@ -7,8 +7,10 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import tech.kayys.andalus.gollek.sdk.AndalusGollekSdk;
-import tech.kayys.andalus.gollek.sdk.AndalusPlatformApi;
+import tech.kayys.andalus.client.Andalus;
+import tech.kayys.andalus.client.AndalusClient;
+import tech.kayys.andalus.client.AndalusGollekSdk;
+import tech.kayys.andalus.client.AndalusPlatformApi;
 
 import java.util.Map;
 
@@ -16,7 +18,7 @@ import java.util.Map;
 @Produces(MediaType.APPLICATION_JSON)
 public class PlatformResource {
 
-    private final AndalusGollekSdk sdk = tech.kayys.andalus.gollek.sdk.Andalus.local();
+    private final AndalusGollekSdk sdk = Andalus.local();
 
     @GET
     @Path("/status")
@@ -24,7 +26,7 @@ public class PlatformResource {
         if (sdk == null) {
             return Response.status(Response.Status.SERVICE_UNAVAILABLE).entity(Map.of("error", "SDK not initialized")).build();
         }
-        AndalusPlatformApi platformApi = tech.kayys.andalus.gollek.sdk.AndalusClient.of(sdk).platform();
+        AndalusPlatformApi platformApi = AndalusClient.of(sdk).platform();
         return Response.ok(platformApi.statusEnvelope(platformApi.status())).build();
     }
 
@@ -34,7 +36,7 @@ public class PlatformResource {
         if (sdk == null) {
             return Response.status(Response.Status.SERVICE_UNAVAILABLE).entity(Map.of("error", "SDK not initialized")).build();
         }
-        AndalusPlatformApi platformApi = tech.kayys.andalus.gollek.sdk.AndalusClient.of(sdk).platform();
+        AndalusPlatformApi platformApi = AndalusClient.of(sdk).platform();
         return Response.ok(platformApi.readinessEnvelope(platformApi.readiness())).build();
     }
 
@@ -44,7 +46,7 @@ public class PlatformResource {
         if (sdk == null) {
             return Response.status(Response.Status.SERVICE_UNAVAILABLE).entity(Map.of("error", "SDK not initialized")).build();
         }
-        AndalusPlatformApi platformApi = tech.kayys.andalus.gollek.sdk.AndalusClient.of(sdk).platform();
+        AndalusPlatformApi platformApi = AndalusClient.of(sdk).platform();
         return Response.ok(platformApi.readinessEnvelope(platformApi.readiness(profileId))).build();
     }
 
@@ -54,7 +56,7 @@ public class PlatformResource {
         if (sdk == null) {
             return Response.status(Response.Status.SERVICE_UNAVAILABLE).entity(Map.of("error", "SDK not initialized")).build();
         }
-        AndalusPlatformApi platformApi = tech.kayys.andalus.gollek.sdk.AndalusClient.of(sdk).platform();
+        AndalusPlatformApi platformApi = AndalusClient.of(sdk).platform();
         return Response.ok(platformApi.productCatalogJson()).build();
     }
 
@@ -64,7 +66,7 @@ public class PlatformResource {
         if (sdk == null) {
             return Response.status(Response.Status.SERVICE_UNAVAILABLE).entity(Map.of("error", "SDK not initialized")).build();
         }
-        AndalusPlatformApi platformApi = tech.kayys.andalus.gollek.sdk.AndalusClient.of(sdk).platform();
+        AndalusPlatformApi platformApi = AndalusClient.of(sdk).platform();
         return Response.ok(platformApi.profilesJson(surfaceId, platformApi.productProfilesForSurface(surfaceId))).build();
     }
 
@@ -74,7 +76,7 @@ public class PlatformResource {
         if (sdk == null) {
             return Response.status(Response.Status.SERVICE_UNAVAILABLE).entity(Map.of("error", "SDK not initialized")).build();
         }
-        AndalusPlatformApi platformApi = tech.kayys.andalus.gollek.sdk.AndalusClient.of(sdk).platform();
+        AndalusPlatformApi platformApi = AndalusClient.of(sdk).platform();
         return Response.ok(platformApi.profileDetailJson(platformApi.productProfile(profileId))).build();
     }
 
@@ -84,7 +86,7 @@ public class PlatformResource {
         if (sdk == null) {
             return Response.status(Response.Status.SERVICE_UNAVAILABLE).entity(Map.of("error", "SDK not initialized")).build();
         }
-        AndalusPlatformApi platformApi = tech.kayys.andalus.gollek.sdk.AndalusClient.of(sdk).platform();
+        AndalusPlatformApi platformApi = AndalusClient.of(sdk).platform();
         return Response.ok(platformApi.sdkBoundaryCatalogJson()).build();
     }
 
@@ -94,7 +96,7 @@ public class PlatformResource {
         if (sdk == null) {
             return Response.status(Response.Status.SERVICE_UNAVAILABLE).entity(Map.of("error", "SDK not initialized")).build();
         }
-        AndalusPlatformApi platformApi = tech.kayys.andalus.gollek.sdk.AndalusClient.of(sdk).platform();
+        AndalusPlatformApi platformApi = AndalusClient.of(sdk).platform();
         return Response.ok(platformApi.sdkBoundaryJson(boundaryId)).build();
     }
 }

@@ -1,6 +1,6 @@
 package tech.kayys.andalus.cli;
 
-import tech.kayys.andalus.gollek.sdk.WorkspaceSnapshot;
+import tech.kayys.andalus.client.WorkspaceSnapshot;
 
 /**
  * Plain-text renderer for local workspace inspection snapshots.

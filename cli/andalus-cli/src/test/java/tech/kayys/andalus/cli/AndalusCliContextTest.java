@@ -2,9 +2,9 @@ package tech.kayys.andalus.cli;
 
 import org.junit.jupiter.api.Test;
 
-import tech.kayys.andalus.gollek.sdk.Andalus;
-import tech.kayys.andalus.gollek.sdk.AndalusClient;
-import tech.kayys.andalus.gollek.sdk.AndalusGollekSdk;
+import tech.kayys.andalus.client.Andalus;
+import tech.kayys.andalus.client.AndalusClient;
+import tech.kayys.andalus.client.AndalusGollekSdk;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

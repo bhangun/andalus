@@ -1,8 +1,8 @@
 package tech.kayys.andalus.cli;
 
-import tech.kayys.andalus.gollek.sdk.AndalusContractCommandCoverage;
-import tech.kayys.andalus.gollek.sdk.AndalusContractCommandCoverageEntry;
-import tech.kayys.andalus.gollek.sdk.AndalusContractCommandCoverageReport;
+import tech.kayys.andalus.contract.AndalusContractCommandCoverage;
+import tech.kayys.andalus.contract.AndalusContractCommandCoverageEntry;
+import tech.kayys.andalus.contract.AndalusContractCommandCoverageReport;
 
 import java.util.LinkedHashSet;
 import java.util.List;

@@ -1,7 +1,7 @@
 package tech.kayys.andalus.cli;
 
-import tech.kayys.andalus.gollek.sdk.AndalusWorkbenchCatalog;
-import tech.kayys.andalus.gollek.sdk.WorkbenchCommand;
+import tech.kayys.andalus.workbench.AndalusWorkbenchCatalog;
+import tech.kayys.andalus.workbench.WorkbenchCommand;
 
 import java.util.HashSet;
 import java.util.List;

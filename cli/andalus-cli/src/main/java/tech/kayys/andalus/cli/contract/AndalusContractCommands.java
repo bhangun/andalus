@@ -7,13 +7,13 @@ import picocli.CommandLine.ParentCommand;
 import tech.kayys.andalus.cli.AndalusCliContext;
 import tech.kayys.andalus.cli.AndalusCliRender;
 import tech.kayys.andalus.cli.AndalusGollekCli;
-import tech.kayys.andalus.gollek.sdk.AndalusClient;
-import tech.kayys.andalus.gollek.sdk.AndalusContractApi;
-import tech.kayys.andalus.gollek.sdk.AndalusContractDescriptor;
-import tech.kayys.andalus.gollek.sdk.AndalusContractDiscovery;
-import tech.kayys.andalus.gollek.sdk.AndalusContractCommandCoverageReport;
-import tech.kayys.andalus.gollek.sdk.AndalusContractIntegrityReport;
-import tech.kayys.andalus.gollek.sdk.AndalusContractQuery;
+import tech.kayys.andalus.client.AndalusClient;
+import tech.kayys.andalus.contract.AndalusContractApi;
+import tech.kayys.andalus.contract.AndalusContractDescriptor;
+import tech.kayys.andalus.contract.AndalusContractDiscovery;
+import tech.kayys.andalus.contract.AndalusContractCommandCoverageReport;
+import tech.kayys.andalus.contract.AndalusContractIntegrityReport;
+import tech.kayys.andalus.contract.AndalusContractQuery;
 
 import java.util.concurrent.Callable;
 

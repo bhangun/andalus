@@ -1,7 +1,7 @@
 package tech.kayys.andalus.cli;
 
-import tech.kayys.andalus.gollek.sdk.AndalusContractDescriptor;
-import tech.kayys.andalus.gollek.sdk.AndalusGollekSdk;
+import tech.kayys.andalus.contract.AndalusContractDescriptor;
+import tech.kayys.andalus.client.AndalusGollekSdk;
 
 import java.io.IOException;
 import java.util.List;

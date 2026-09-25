@@ -3,9 +3,9 @@ package tech.kayys.andalus.cli;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
-import tech.kayys.andalus.gollek.sdk.session.AndalusSessionStore;
-import tech.kayys.andalus.sdk.gollek.ProjectStore;
-import tech.kayys.andalus.sdk.gollek.model.Project;
+import tech.kayys.andalus.project.Project;
+import tech.kayys.andalus.project.ProjectStore;
+import tech.kayys.andalus.session.AndalusSessionStore;
 
 import java.io.PrintStream;
 import java.nio.file.Files;

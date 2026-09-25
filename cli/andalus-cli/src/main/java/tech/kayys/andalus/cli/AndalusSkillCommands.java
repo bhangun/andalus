@@ -7,11 +7,11 @@ import picocli.CommandLine.Parameters;
 import picocli.CommandLine.ParentCommand;
 import tech.kayys.andalus.cli.skill.AndalusSkillQueryOptions;
 import tech.kayys.andalus.cli.skill.AndalusSkillTextFormat;
-import tech.kayys.andalus.gollek.sdk.AgentSkillDiscovery;
-import tech.kayys.andalus.gollek.sdk.AgentSkillQuery;
-import tech.kayys.andalus.gollek.sdk.RegisteredSkill;
-import tech.kayys.andalus.gollek.sdk.AndalusClient;
-import tech.kayys.andalus.gollek.sdk.AndalusSkillApi;
+import tech.kayys.andalus.agent.skill.AgentSkillDiscovery;
+import tech.kayys.andalus.agent.skill.AgentSkillQuery;
+import tech.kayys.andalus.skill.RegisteredSkill;
+import tech.kayys.andalus.client.AndalusClient;
+import tech.kayys.andalus.skill.AndalusSkillApi;
 
 import java.io.PrintStream;
 import java.util.concurrent.Callable;

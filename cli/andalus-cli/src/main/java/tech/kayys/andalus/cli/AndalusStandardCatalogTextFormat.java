@@ -1,8 +1,8 @@
 package tech.kayys.andalus.cli;
 
-import tech.kayys.andalus.gollek.sdk.AndalusStandardCatalog;
-import tech.kayys.andalus.gollek.sdk.AndalusStandardCatalogEnvelopes;
-import tech.kayys.andalus.gollek.sdk.AndalusStandardDefinition;
+import tech.kayys.andalus.catalog.AndalusStandardCatalog;
+import tech.kayys.andalus.catalog.AndalusStandardCatalogEnvelopes;
+import tech.kayys.andalus.client.AndalusStandardDefinition;
 
 /**
  * Text renderer for standards catalog responses shown by the Andalus CLI.

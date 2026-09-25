@@ -1,6 +1,6 @@
 package tech.kayys.andalus.cli;
 
-import tech.kayys.andalus.gollek.sdk.AndalusSdkBoundary;
+import tech.kayys.andalus.boundry.AndalusSdkBoundary;
 
 import java.util.List;
 

@@ -3,8 +3,8 @@ package tech.kayys.andalus.cli;
 import org.junit.jupiter.api.Test;
 
 import tech.kayys.andalus.cli.AndalusStandardPolicyOptions;
-import tech.kayys.andalus.gollek.sdk.AndalusStandardAlignmentPolicyConfig;
-import tech.kayys.andalus.gollek.sdk.AndalusStandardRegistryDriftMode;
+import tech.kayys.andalus.alignment.AndalusStandardAlignmentPolicyConfig;
+import tech.kayys.andalus.registry.AndalusStandardRegistryDriftMode;
 
 import java.util.List;
 import java.util.Map;

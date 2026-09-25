@@ -1,7 +1,7 @@
 package tech.kayys.andalus.sdk.client;
 
-import tech.kayys.andalus.sdk.gollek.ProjectStore;
-import tech.kayys.andalus.sdk.gollek.model.Session;
+import tech.kayys.andalus.project.ProjectStore;
+import tech.kayys.andalus.project.Session;
 import java.util.List;
 
 /**

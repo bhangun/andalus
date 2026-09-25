@@ -1,20 +1,20 @@
 package tech.kayys.andalus.cli;
 
-import tech.kayys.andalus.gollek.sdk.AgentRunLifecycleContract;
-import tech.kayys.andalus.gollek.sdk.AndalusCommandDiscoveryContract;
-import tech.kayys.andalus.gollek.sdk.AndalusContractCatalog;
-import tech.kayys.andalus.gollek.sdk.AndalusContractCoverageContract;
-import tech.kayys.andalus.gollek.sdk.AndalusContractDescriptor;
-import tech.kayys.andalus.gollek.sdk.AndalusContractDiscovery;
-import tech.kayys.andalus.gollek.sdk.AndalusContractQuery;
-import tech.kayys.andalus.gollek.sdk.AndalusGollekSdk;
-import tech.kayys.andalus.gollek.sdk.AndalusPlatformContract;
-import tech.kayys.andalus.gollek.sdk.AndalusProviderCapabilityContract;
-import tech.kayys.andalus.gollek.sdk.AndalusReadinessContract;
-import tech.kayys.andalus.gollek.sdk.AndalusSkillContract;
-import tech.kayys.andalus.gollek.sdk.AndalusStandardAlignmentContract;
-import tech.kayys.andalus.gollek.sdk.AndalusStandardCatalogContract;
-import tech.kayys.andalus.gollek.sdk.AndalusWorkbenchContract;
+import tech.kayys.andalus.agent.lifecycle.AgentRunLifecycleContract;
+import tech.kayys.andalus.command.AndalusCommandDiscoveryContract;
+import tech.kayys.andalus.contract.AndalusContractCatalog;
+import tech.kayys.andalus.contract.AndalusContractCoverageContract;
+import tech.kayys.andalus.contract.AndalusContractDescriptor;
+import tech.kayys.andalus.contract.AndalusContractDiscovery;
+import tech.kayys.andalus.contract.AndalusContractQuery;
+import tech.kayys.andalus.client.AndalusGollekSdk;
+import tech.kayys.andalus.client.AndalusPlatformContract;
+import tech.kayys.andalus.capability.AndalusProviderCapabilityContract;
+import tech.kayys.andalus.readiness.AndalusReadinessContract;
+import tech.kayys.andalus.skill.AndalusSkillContract;
+import tech.kayys.andalus.alignment.AndalusStandardAlignmentContract;
+import tech.kayys.andalus.catalog.AndalusStandardCatalogContract;
+import tech.kayys.andalus.workbench.AndalusWorkbenchContract;
 
 import java.util.List;
 import java.util.function.Supplier;

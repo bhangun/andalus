@@ -1,16 +1,16 @@
 package tech.kayys.andalus.cli;
 
 import org.junit.jupiter.api.Test;
-import tech.kayys.andalus.gollek.sdk.AndalusContractCatalog;
-import tech.kayys.andalus.gollek.sdk.AndalusContractCommandCoverage;
-import tech.kayys.andalus.gollek.sdk.AndalusContractCommandCoverageEntry;
-import tech.kayys.andalus.gollek.sdk.AndalusContractCommandCoverageReport;
-import tech.kayys.andalus.gollek.sdk.AndalusContractDescriptor;
-import tech.kayys.andalus.gollek.sdk.AndalusContractIndex;
-import tech.kayys.andalus.gollek.sdk.AndalusContractKey;
-import tech.kayys.andalus.gollek.sdk.AndalusWorkbenchCatalog;
-import tech.kayys.andalus.gollek.sdk.WorkbenchCommand;
-import tech.kayys.andalus.gollek.sdk.WorkbenchCommandContract;
+import tech.kayys.andalus.contract.AndalusContractCatalog;
+import tech.kayys.andalus.contract.AndalusContractCommandCoverage;
+import tech.kayys.andalus.contract.AndalusContractCommandCoverageEntry;
+import tech.kayys.andalus.contract.AndalusContractCommandCoverageReport;
+import tech.kayys.andalus.contract.AndalusContractDescriptor;
+import tech.kayys.andalus.contract.AndalusContractIndex;
+import tech.kayys.andalus.contract.AndalusContractKey;
+import tech.kayys.andalus.workbench.AndalusWorkbenchCatalog;
+import tech.kayys.andalus.workbench.WorkbenchCommand;
+import tech.kayys.andalus.workbench.WorkbenchCommandContract;
 
 import java.io.IOException;
 import java.util.LinkedHashMap;

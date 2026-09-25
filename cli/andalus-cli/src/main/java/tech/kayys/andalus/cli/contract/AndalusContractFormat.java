@@ -1,7 +1,7 @@
 package tech.kayys.andalus.cli.contract;
 
-import tech.kayys.andalus.gollek.sdk.AgentRunLifecycleContract;
-import tech.kayys.andalus.gollek.sdk.AgentRunPlanningContract;
+import tech.kayys.andalus.agent.lifecycle.AgentRunLifecycleContract;
+import tech.kayys.andalus.agent.planner.AgentRunPlanningContract;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

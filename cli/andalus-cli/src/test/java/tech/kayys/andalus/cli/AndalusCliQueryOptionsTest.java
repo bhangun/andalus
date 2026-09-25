@@ -1,18 +1,18 @@
 package tech.kayys.andalus.cli;
 
 import org.junit.jupiter.api.Test;
-import tech.kayys.andalus.gollek.sdk.AgentSkillQuery;
-import tech.kayys.andalus.gollek.sdk.AgentSkillState;
+import tech.kayys.andalus.agent.skill.AgentSkillQuery;
+import tech.kayys.andalus.agent.skill.AgentSkillState;
 import tech.kayys.andalus.cli.AndalusCommandQueryOptions;
 import tech.kayys.andalus.cli.contract.AndalusContractQueryOptions;
 import tech.kayys.andalus.cli.run.AndalusRunEventQueryOptions;
 import tech.kayys.andalus.cli.run.AndalusRunHistoryQueryOptions;
 import tech.kayys.andalus.cli.skill.AndalusSkillQueryOptions;
-import tech.kayys.andalus.gollek.sdk.AgentRunEventsQuery;
-import tech.kayys.andalus.gollek.sdk.AgentRunHistoryQuery;
-import tech.kayys.andalus.gollek.sdk.AgentRunState;
-import tech.kayys.andalus.gollek.sdk.AndalusContractQuery;
-import tech.kayys.andalus.gollek.sdk.WorkbenchCommandQuery;
+import tech.kayys.andalus.agent.event.AgentRunEventsQuery;
+import tech.kayys.andalus.agent.history.AgentRunHistoryQuery;
+import tech.kayys.andalus.agent.run.AgentRunState;
+import tech.kayys.andalus.contract.AndalusContractQuery;
+import tech.kayys.andalus.workbench.WorkbenchCommandQuery;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

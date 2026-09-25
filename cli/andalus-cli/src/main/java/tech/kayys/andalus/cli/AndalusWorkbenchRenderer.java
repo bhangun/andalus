@@ -1,7 +1,7 @@
 package tech.kayys.andalus.cli;
 
-import tech.kayys.andalus.gollek.sdk.AndalusWorkbenchModel;
-import tech.kayys.andalus.gollek.sdk.WorkspaceSnapshot;
+import tech.kayys.andalus.client.AndalusWorkbenchModel;
+import tech.kayys.andalus.client.WorkspaceSnapshot;
 
 interface AndalusWorkbenchRenderer<T> {
 

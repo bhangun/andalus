@@ -1,10 +1,10 @@
 package tech.kayys.andalus.tui.ui;
 
-import tech.kayys.andalus.sdk.agent.AndalusAgent;
-import tech.kayys.andalus.sdk.agent.AndalusAgentListener;
-import tech.kayys.andalus.sdk.agent.PermissionDecision;
-import tech.kayys.andalus.sdk.json.Json;
-import tech.kayys.andalus.sdk.json.JsonValue;
+import tech.kayys.andalus.agent.AndalusAgent;
+import tech.kayys.andalus.agent.AndalusAgentListener;
+import tech.kayys.andalus.agent.PermissionDecision;
+import tech.kayys.andalus.json.Json;
+import tech.kayys.andalus.json.JsonValue;
 import tech.kayys.andalus.tools.spi.Tool;
 import tech.kayys.andalus.tools.spi.ToolResult;
 import tech.kayys.andalus.tui.config.Config;
@@ -189,11 +189,11 @@ public final class ReplUi {
                 System.out.println("→ " + name);
             }
 
-            @Override public void onToolCallReady(String id, String name, tech.kayys.andalus.sdk.json.JsonValue in) {
+            @Override public void onToolCallReady(String id, String name, java.util.Map<String, Object> in) {
                 System.out.println("  " + summarizeArgs(in));
             }
 
-            @Override public void onToolPermissionNeeded(String id, String name, tech.kayys.andalus.sdk.json.JsonValue in, Consumer<PermissionDecision> responder) {
+            @Override public void onToolPermissionNeeded(String id, String name, java.util.Map<String, Object> in, Consumer<PermissionDecision> responder) {
                 System.out.print("  Allow '" + name + "' to run? [y]es/[n]o/[a]lways: ");
                 System.out.flush();
                 try {
@@ -835,7 +835,7 @@ public final class ReplUi {
         return "Andalus Agent — general-purpose AI assistant";
     }
 
-    private String summarizeArgs(tech.kayys.andalus.sdk.json.JsonValue input) {
+    private String summarizeArgs(Object input) {
         String s = input != null ? input.toString() : "{}";
         if (s.length() > 140) s = s.substring(0, 140) + "...";
         return s;
@@ -1113,7 +1113,7 @@ public final class ReplUi {
             appendBlock(List.of(Ansi.fg(Theme.TOOL) + "→ " + name + Ansi.RESET));
         }
 
-        @Override public void onToolCallReady(String id, String name, tech.kayys.andalus.sdk.json.JsonValue toolInput) {
+        @Override public void onToolCallReady(String id, String name, java.util.Map<String, Object> toolInput) {
             // Args are hidden by default to keep the UX clean.
             // Set env ANDALUS_VERBOSE_TOOLS=1 to show them.
             if ("1".equals(System.getenv("ANDALUS_VERBOSE_TOOLS"))
@@ -1122,7 +1122,7 @@ public final class ReplUi {
             }
         }
 
-        @Override public void onToolPermissionNeeded(String id, String name, tech.kayys.andalus.sdk.json.JsonValue toolInput,
+        @Override public void onToolPermissionNeeded(String id, String name, java.util.Map<String, Object> toolInput,
                                                      Consumer<PermissionDecision> responder) {
             pendingPermissionResponder = responder;
             pendingToolName = name;
